@@ -1,0 +1,1300 @@
+<title>サポートブック 入力フォーム</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --ink: #26332f;
+    --muted: #5b6b66;
+    --paper: #f2f5f3;
+    --card: #ffffff;
+    --card-alt: #fbfaf6;
+    --line: #d8dfda;
+    --accent: #2f6f63;
+    --accent-ink: #1d4a41;
+    --accent-soft: #dcede8;
+    --highlight: #d97a3f;
+    --highlight-soft: #fbe6d4;
+    --danger: #b64b3f;
+    --focus: #2f6f63;
+    --shadow: 0 1px 2px rgba(38, 51, 47, 0.06), 0 6px 20px rgba(38, 51, 47, 0.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #e7ede9;
+      --muted: #9db0a9;
+      --paper: #141c1a;
+      --card: #1b2422;
+      --card-alt: #202a27;
+      --line: #2c3934;
+      --accent: #6fbfae;
+      --accent-ink: #bfe8dc;
+      --accent-soft: #22342f;
+      --highlight: #f0975b;
+      --highlight-soft: #3a2c20;
+      --danger: #e08a7d;
+      --focus: #6fbfae;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #e7ede9;
+    --muted: #9db0a9;
+    --paper: #141c1a;
+    --card: #1b2422;
+    --card-alt: #202a27;
+    --line: #2c3934;
+    --accent: #6fbfae;
+    --accent-ink: #bfe8dc;
+    --accent-soft: #22342f;
+    --highlight: #f0975b;
+    --highlight-soft: #3a2c20;
+    --danger: #e08a7d;
+    --focus: #6fbfae;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+  :root[data-theme="light"] {
+    --ink: #26332f;
+    --muted: #5b6b66;
+    --paper: #f2f5f3;
+    --card: #ffffff;
+    --card-alt: #fbfaf6;
+    --line: #d8dfda;
+    --accent: #2f6f63;
+    --accent-ink: #1d4a41;
+    --accent-soft: #dcede8;
+    --highlight: #d97a3f;
+    --highlight-soft: #fbe6d4;
+    --danger: #b64b3f;
+    --focus: #2f6f63;
+    --shadow: 0 1px 2px rgba(38, 51, 47, 0.06), 0 6px 20px rgba(38, 51, 47, 0.05);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  h1, h2, h3 {
+    font-family: "Hiragino Maru Gothic ProN", "BIZ UDPGothic", "Yu Gothic UI", "Meiryo", sans-serif;
+    font-weight: 700;
+    text-wrap: balance;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    padding: 10px 20px;
+  }
+  .topbar-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .topbar-title {
+    font-family: "Hiragino Maru Gothic ProN", "BIZ UDPGothic", "Yu Gothic UI", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--accent-ink);
+    white-space: nowrap;
+  }
+  .topbar-title small {
+    display: block;
+    font-weight: 500;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+  .topbar-status {
+    font-size: 12px;
+    color: var(--muted);
+    margin-left: auto;
+  }
+  .topbar-status.saved { color: var(--accent); }
+  .navjump {
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--ink);
+    max-width: 180px;
+  }
+  .topbar-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  @media (min-width: 760px) {
+    .topbar-actions { width: auto; }
+  }
+
+  button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+  .btn {
+    font-size: 12.5px;
+    padding: 7px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--ink);
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .btn:hover { border-color: var(--accent); }
+  .btn:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+  .btn-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover { background: var(--accent-ink); border-color: var(--accent-ink); }
+  .btn-ghost { background: transparent; }
+  .btn-danger { color: var(--danger); border-color: var(--danger); background: transparent; }
+
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 28px 20px 80px;
+  }
+
+  .intro {
+    padding: 4px 2px 6px;
+  }
+  .intro h1 { font-size: 26px; }
+  .intro p { color: var(--muted); font-size: 13.5px; margin: 8px 0 0; max-width: 60ch; }
+
+  .hero-illustration {
+    width: 100%;
+    height: auto;
+    margin: 18px 0 24px;
+    display: block;
+    break-inside: avoid;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 22px 22px 24px;
+    margin-bottom: 18px;
+    scroll-margin-top: 90px;
+  }
+  .card-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .icon-badge {
+    flex: none;
+    position: relative;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-badge svg { width: 24px; height: 24px; overflow: visible; }
+  .icon-chip {
+    position: absolute;
+    right: -4px;
+    bottom: -4px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-variant-numeric: tabular-nums;
+  }
+  .card-head h2 { font-size: 17px; }
+  .card-head .card-sub { font-size: 12px; color: var(--muted); margin-top: 3px; font-weight: 500; }
+  .badge-new {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--highlight);
+    background: var(--highlight-soft);
+    border-radius: 999px;
+    padding: 2px 8px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  .subsection { padding-top: 14px; border-top: 1px dashed var(--line); margin-top: 14px; }
+  .subsection:first-of-type { border-top: none; margin-top: 0; padding-top: 0; }
+  .subsection-title { font-size: 13.5px; font-weight: 700; color: var(--accent-ink); margin-bottom: 10px; }
+
+  label {
+    display: block;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 5px;
+  }
+  .field { margin-bottom: 12px; }
+  input[type="text"], input[type="date"], input[type="tel"], input[type="number"], textarea, select {
+    width: 100%;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--card-alt);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 9px 10px;
+  }
+  input[type="number"] { font-variant-numeric: tabular-nums; }
+  textarea { resize: vertical; min-height: 58px; }
+  .row-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px 12px;
+  }
+  .age-pair { display: flex; align-items: center; gap: 6px; }
+  .age-pair input { width: 100%; }
+  .age-pair span { font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+  .age-hint { font-size: 11px; color: var(--muted); margin-top: -2px; margin-bottom: 10px; }
+  .checkline { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--ink); font-weight: 500; }
+  .checkline input { width: auto; }
+
+  .repeat-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 10px; }
+  .repeat-row {
+    background: var(--card-alt);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 14px 10px;
+    position: relative;
+  }
+  .row-remove {
+    font-size: 11.5px;
+    color: var(--danger);
+    background: none;
+    border: none;
+    padding: 4px 0;
+    margin-top: 2px;
+  }
+  .row-remove:hover { text-decoration: underline; }
+  .add-btn {
+    font-size: 12.5px;
+    padding: 7px 12px;
+    border-radius: 8px;
+    border: 1px dashed var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+    font-weight: 600;
+  }
+  .add-btn:hover { background: var(--accent); color: #fff; }
+
+  .change-field label { color: var(--highlight); }
+  .change-field textarea { border-color: color-mix(in srgb, var(--highlight) 40%, var(--line)); }
+
+  footer {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 10px 20px 60px;
+    font-size: 11.5px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .modal-backdrop {
+    position: fixed; inset: 0; background: rgba(20, 28, 26, 0.55);
+    display: none; align-items: center; justify-content: center; z-index: 100; padding: 20px;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal {
+    background: var(--card); border-radius: 14px; box-shadow: var(--shadow);
+    max-width: 640px; width: 100%; max-height: 82vh; display: flex; flex-direction: column;
+    border: 1px solid var(--line);
+  }
+  .modal-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 18px; border-bottom: 1px solid var(--line); }
+  .modal-head h3 { font-size: 15px; }
+  .modal-body { padding: 16px 18px; overflow-y: auto; }
+  .modal-body textarea { min-height: 320px; font-size: 12.5px; font-family: "Courier New", monospace; white-space: pre; }
+  .modal-foot { padding: 12px 18px; border-top: 1px solid var(--line); display: flex; gap: 8px; justify-content: flex-end; }
+  .modal-close { background: none; border: none; font-size: 18px; color: var(--muted); line-height: 1; }
+
+  @media print {
+    :root, :root[data-theme="dark"], :root[data-theme="light"] {
+      --ink: #26332f;
+      --muted: #5b6b66;
+      --paper: #ffffff;
+      --card: #ffffff;
+      --card-alt: #fbfaf6;
+      --line: #d8dfda;
+      --accent: #2f6f63;
+      --accent-ink: #1d4a41;
+      --accent-soft: #dcede8;
+      --highlight: #d97a3f;
+      --highlight-soft: #fbe6d4;
+    }
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+    .topbar, .add-btn, .row-remove, .modal-backdrop, .no-print { display: none !important; }
+    body { background: #fff; color: var(--ink); }
+    .card { box-shadow: none; border: 1px solid var(--line); break-inside: avoid; }
+    main { max-width: 100%; padding: 0 8px; }
+    a { color: inherit; text-decoration: none; }
+  }
+</style>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      サポートブック <span id="topbarChildName"></span>
+      <small>入力フォーム</small>
+    </div>
+    <select class="navjump" id="navJump" aria-label="セクションへ移動">
+      <option value="">セクションへ移動…</option>
+    </select>
+    <span class="topbar-status" id="saveStatus">未保存</span>
+    <div class="topbar-actions">
+      <button class="btn" id="btnExportText">テキストで書き出す</button>
+      <button class="btn" id="btnExportJson">JSONを保存</button>
+      <button class="btn" id="btnImportJson">JSONを読み込む</button>
+      <button class="btn" id="btnPrint">印刷 / PDF保存</button>
+      <button class="btn btn-danger" id="btnClear">すべて消去</button>
+    </div>
+  </div>
+</div>
+<input type="file" id="fileImport" accept="application/json" style="display:none" />
+
+<main>
+  <div class="intro">
+    <h1>サポートブック 入力フォーム</h1>
+    <p>お子さんの特性や成長の様子を、学校・園の先生や放課後等デイサービス・療育施設と共有するための記録です。入力内容はこの端末のブラウザに自動保存されます。他の端末で使う場合は「JSONを保存」で書き出し、「JSONを読み込む」で復元してください。空欄のままで構いません。</p>
+    <svg class="hero-illustration" viewBox="0 0 640 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="太陽と芽生えの挿絵">
+      <circle cx="536" cy="46" r="30" style="fill:var(--highlight-soft)" />
+      <g style="stroke:var(--highlight); stroke-width:3; stroke-linecap:round">
+        <line x1="536" y1="4" x2="536" y2="-4" />
+        <line x1="536" y1="88" x2="536" y2="96" />
+        <line x1="492" y1="46" x2="484" y2="46" />
+        <line x1="580" y1="46" x2="588" y2="46" />
+        <line x1="505" y1="15" x2="499" y2="9" />
+        <line x1="567" y1="77" x2="573" y2="83" />
+        <line x1="505" y1="77" x2="499" y2="83" />
+        <line x1="567" y1="15" x2="573" y2="9" />
+      </g>
+      <circle cx="536" cy="46" r="21" style="fill:var(--highlight)" />
+      <path d="M0,150 C 90,120 150,150 240,138 C 340,124 380,150 470,140 C 540,132 590,146 640,136 L640,168 L0,168 Z" style="fill:var(--accent-soft)" />
+      <g style="stroke:var(--accent); stroke-width:3.5; stroke-linecap:round; stroke-linejoin:round; fill:none">
+        <path d="M108,150 C108,118 108,100 108,88" />
+        <path d="M108,100 C 92,100 80,88 78,70 C 98,68 110,80 108,100 Z" style="fill:var(--accent-soft)" />
+        <path d="M108,92 C 124,92 136,80 138,62 C 118,60 106,72 108,92 Z" style="fill:var(--accent-soft)" />
+      </g>
+      <g style="fill:var(--highlight)">
+        <path d="M188,60 l4.5,9.5 L202,71 l-7,7 1.7,10.3 L188,83.5 179.3,88.3 181,78 174,71 183.5,69.5 Z" />
+        <path d="M298,34 l3,6.4 L308,42 l-4.8,4.7 1.1,6.9 -6.3,-3.3 -6.3,3.3 1.1,-6.9 L288,42l6.9,-1.6 Z" />
+      </g>
+      <path d="M406,58 c0,-12 9,-19 15,-19 4,0 8,2.6 8,8 0,-5.4 4,-8 8,-8 6,0 15,7 15,19 0,14 -15,25 -23,29 -8,-4 -23,-15 -23,-29 Z" style="fill:var(--highlight)" />
+    </svg>
+  </div>
+
+  <!-- 0. 表紙 -->
+  <section class="card" id="sec-cover">
+    <div class="card-head">
+      <div class="icon-badge" data-icon="cover"><span class="icon-chip">0</span></div>
+      <div>
+        <h2>表紙・基本情報</h2>
+        <div class="card-sub">Cover</div>
+      </div>
+    </div>
+    <div class="row-grid">
+      <div class="field">
+        <label for="coverName">お子さんの氏名</label>
+        <input type="text" id="coverName" data-field-scalar="cover.name" placeholder="例：○○ 太郎">
+      </div>
+      <div class="field">
+        <label for="coverKana">ふりがな</label>
+        <input type="text" id="coverKana" data-field-scalar="cover.kana" placeholder="例：○○ たろう">
+      </div>
+      <div class="field">
+        <label for="coverBirthdate">生年月日</label>
+        <input type="date" id="coverBirthdate" data-field-scalar="cover.birthdate">
+      </div>
+      <div class="field">
+        <label>現在の年齢（自動計算）</label>
+        <div id="coverAgeDisplay" style="padding:9px 10px; color:var(--muted); font-size:13px;">生年月日を入力すると表示されます</div>
+      </div>
+      <div class="field">
+        <label for="coverBlood">血液型</label>
+        <select id="coverBlood" data-field-scalar="cover.blood">
+          <option value="">選択してください</option>
+          <option>A型</option><option>B型</option><option>O型</option><option>AB型</option><option>不明</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="coverAuthor">作成者</label>
+        <input type="text" id="coverAuthor" data-field-scalar="cover.author" placeholder="例：母">
+      </div>
+      <div class="field">
+        <label for="coverCreated">初版作成日</label>
+        <input type="date" id="coverCreated" data-field-scalar="cover.createdDate">
+      </div>
+      <div class="field">
+        <label for="coverUpdated">最終更新日</label>
+        <input type="date" id="coverUpdated" data-field-scalar="cover.updatedDate">
+      </div>
+    </div>
+    <div class="field change-field">
+      <label for="coverSummary">最近の変化・成長（ひとことまとめ）<span class="badge-new">追加</span></label>
+      <textarea id="coverSummary" data-field-scalar="cover.summary" rows="2" placeholder="例：切り替えの声かけが以前より通りやすくなった、など"></textarea>
+    </div>
+  </section>
+
+  <!-- 1. プロフィール -->
+  <section class="card" id="sec-profile">
+    <div class="card-head">
+      <div class="icon-badge" data-icon="profile"><span class="icon-chip">1</span></div>
+      <div><h2>プロフィール</h2><div class="card-sub">基本情報・家族構成</div></div>
+    </div>
+
+    <div class="row-grid">
+      <div class="field">
+        <label for="profSchool">通っている園・学校名</label>
+        <input type="text" id="profSchool" data-field-scalar="profile.school" placeholder="例：○○市立○○小学校">
+      </div>
+      <div class="field">
+        <label for="profGrade">学年・クラス（交流級等）</label>
+        <input type="text" id="profGrade" data-field-scalar="profile.grade" placeholder="例：3年2組（交流級3-1）">
+      </div>
+    </div>
+    <div class="field">
+      <label for="profBirthCondition">出生時の状況</label>
+      <textarea id="profBirthCondition" data-field-scalar="profile.birthCondition" rows="2" placeholder="出産場所、出生時の異常の有無など"></textarea>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">家族構成</div>
+      <div class="repeat-list" id="list-family" data-repeater="family" data-template="tmpl-family"></div>
+      <button type="button" class="add-btn" data-add-for="list-family">＋ 家族を追加</button>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">病歴等</div>
+      <div class="field">
+        <label for="medHistory">既往歴</label>
+        <textarea id="medHistory" data-field-scalar="medical.history" rows="2"></textarea>
+      </div>
+      <div class="field">
+        <label for="medTreatment">治療中の病気・服薬</label>
+        <textarea id="medTreatment" data-field-scalar="medical.treatment" rows="2"></textarea>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">手帳類</div>
+      <div class="repeat-list" id="list-techo" data-repeater="techo" data-template="tmpl-techo"></div>
+      <button type="button" class="add-btn" data-add-for="list-techo">＋ 手帳を追加</button>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">診断結果 <span class="badge-new">年齢記録に対応</span></div>
+      <div class="age-hint">「何年頃」だけでなく、その時点でのお子さんの年齢（月齢含む）も記録できます。</div>
+      <div class="repeat-list" id="list-diagnosis" data-repeater="diagnosis" data-template="tmpl-diagnosis"></div>
+      <button type="button" class="add-btn" data-add-for="list-diagnosis">＋ 診断記録を追加</button>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">療育歴 <span class="badge-new">年齢記録に対応</span></div>
+      <div class="repeat-list" id="list-therapy" data-repeater="therapy" data-template="tmpl-therapy"></div>
+      <button type="button" class="add-btn" data-add-for="list-therapy">＋ 療育記録を追加</button>
+    </div>
+  </section>
+
+  <!-- 2. 療育の様子 -->
+  <section class="card" id="sec-progress">
+    <div class="card-head">
+      <div class="icon-badge" data-icon="progress"><span class="icon-chip">2</span></div>
+      <div><h2>療育の様子</h2><div class="card-sub">時期ごとの記録（年齢・月齢入り）</div></div>
+    </div>
+    <div class="age-hint">「通い始め」「1年後」など好きな時期のラベルを付けて、その時点の年齢で記録できます。何回でも追加できます。</div>
+    <div class="repeat-list" id="list-therapyProgress" data-repeater="therapyProgress" data-template="tmpl-therapyProgress"></div>
+    <button type="button" class="add-btn" data-add-for="list-therapyProgress">＋ 時期の記録を追加</button>
+  </section>
+
+  <!-- 3. 困ったときの工夫・声かけ (NEW) -->
+  <section class="card" id="sec-tips">
+    <div class="card-head">
+      <div class="icon-badge" data-icon="tips"><span class="icon-chip">3</span></div>
+      <div><h2>困ったときの工夫・声かけ <span class="badge-new">新しいセクション</span></h2><div class="card-sub">家庭での工夫・切り替えアイテム・声かけの成功事例</div></div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">子どもが崩れてしまわないように家庭等でしている工夫</div>
+      <div class="repeat-list" id="list-homeTips" data-repeater="homeTips" data-template="tmpl-homeTips"></div>
+      <button type="button" class="add-btn" data-add-for="list-homeTips">＋ 工夫を追加</button>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">気持ちの切り替えアイテム</div>
+      <div class="repeat-list" id="list-switchItems" data-repeater="switchItems" data-template="tmpl-switchItems"></div>
+      <button type="button" class="add-btn" data-add-for="list-switchItems">＋ アイテムを追加</button>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">療育等で癇癪等が起きたときの声かけの工夫（成功事例）</div>
+      <div class="age-hint">家庭や他の施設等でうまくいった声かけの実例を記録できます。</div>
+      <div class="repeat-list" id="list-callouts" data-repeater="callouts" data-template="tmpl-callouts"></div>
+      <button type="button" class="add-btn" data-add-for="list-callouts">＋ 事例を追加</button>
+    </div>
+  </section>
+
+  <!-- 4. 親から見た特性 ① -->
+  <section class="card" id="sec-trait1">
+    <div class="card-head">
+      <div class="icon-badge" data-icon="trait1"><span class="icon-chip">4</span></div>
+      <div><h2>親から見た特性 ①</h2><div class="card-sub">身辺自立・時間管理・集団生活</div></div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">身辺自立</div>
+      <div class="field"><label>できている点</label><textarea data-field-scalar="trait1.selfcareGood" rows="2"></textarea></div>
+      <div class="field"><label>サポートが必要な点</label><textarea data-field-scalar="trait1.selfcareSupport" rows="2"></textarea></div>
+      <div class="field change-field"><label>以前と比べて変わった点 <span class="badge-new">追加</span></label><textarea data-field-scalar="trait1.selfcareChange" rows="2"></textarea></div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-title">時間管理</div>
+      <div class="field"><label>できている点</label><textarea data-field-scalar="trait1.timeGood" rows="2"></textarea></div>
+      <div class="field"><label>サポートが必要な点</label><textarea data-field-scalar="trait1.timeSupport" rows="2"></textarea></div>
+      <div class="field change-field"><label>以前と比べて変わった点 <span class="badge-new">追加</span></label><textarea data-field-scalar="trait1.timeChange" rows="2"></textarea></div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-title">集団生活</div>
+      <div class="field"><label>できている点</label><textarea data-field-scalar="trait1.groupGood" rows="2"></textarea></div>
+      <div class="field"><label>サポートが必要な点</label><textarea data-field-scalar="trait1.groupSupport" rows="2"></textarea></div>
+      <div class="field change-field"><label>以前と比べて変わった点 <span class="badge-new">追加</span></label><textarea data-field-scalar="trait1.groupChange" rows="2"></textarea></div>
+    </div>
+  </section>
+
+  <!-- 5. 親から見た特性 ② -->
+  <section class="card" id="sec-trait2">
+    <div class="card-head">
+      <div class="icon-badge" data-icon="trait2"><span class="icon-chip">5</span></div>
+      <div><h2>親から見た特性 ②</h2><div class="card-sub">言語コミュニケーション・こだわり／習慣</div></div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-title">言語コミュニケーション</div>
+      <div class="field"><label>できている点</label><textarea data-field-scalar="trait2.langGood" rows="2"></textarea></div>
+      <div class="field"><label>サポートが必要な点</label><textarea data-field-scalar="trait2.langSupport" rows="2"></textarea></div>
+      <div class="field change-field"><label>以前と比べて変わった点 <span class="badge-new">追加</span></label><textarea data-field-scalar="trait2.langChange" rows="2"></textarea></div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-title">こだわり・習慣</div>
+      <div class="field"><label>できている点</label><textarea data-field-scalar="trait2.habitGood" rows="2"></textarea></div>
+      <div class="field"><label>サポートが必要な点</label><textarea data-field-scalar="trait2.habitSupport" rows="2"></textarea></div>
+      <div class="field change-field"><label>以前と比べて変わった点 <span class="badge-new">追加</span></label><textarea data-field-scalar="trait2.habitChange" rows="2"></textarea></div>
+    </div>
+  </section>
+
+  <!-- 6. 人とのかかわり -->
+  <section class="card" id="sec-relationships">
+    <div class="card-head">
+      <div class="icon-badge" data-icon="relationships"><span class="icon-chip">6</span></div>
+      <div><h2>人とのかかわり</h2><div class="card-sub">相手ごとの様子</div></div>
+    </div>
+    <div class="repeat-list" id="list-relationships" data-repeater="relationships" data-template="tmpl-relationships"></div>
+    <button type="button" class="add-btn" data-add-for="list-relationships">＋ 相手を追加</button>
+  </section>
+
+  <!-- 7. 親から見た特性 ③ -->
+  <section class="card" id="sec-trait3">
+    <div class="card-head">
+      <div class="icon-badge" data-icon="trait3"><span class="icon-chip">7</span></div>
+      <div><h2>親から見た特性 ③</h2><div class="card-sub">運動・文字／数字／色など</div></div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-title">運動</div>
+      <div class="field"><label>できている点</label><textarea data-field-scalar="trait3.motorGood" rows="2"></textarea></div>
+      <div class="field"><label>サポートが必要な点</label><textarea data-field-scalar="trait3.motorSupport" rows="2"></textarea></div>
+      <div class="field change-field"><label>以前と比べて変わった点 <span class="badge-new">追加</span></label><textarea data-field-scalar="trait3.motorChange" rows="2"></textarea></div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-title">文字・数字・色など</div>
+      <div class="field"><label>できている点</label><textarea data-field-scalar="trait3.letterGood" rows="2"></textarea></div>
+      <div class="field"><label>サポートが必要な点</label><textarea data-field-scalar="trait3.letterSupport" rows="2"></textarea></div>
+      <div class="field change-field"><label>以前と比べて変わった点 <span class="badge-new">追加</span></label><textarea data-field-scalar="trait3.letterChange" rows="2"></textarea></div>
+    </div>
+  </section>
+
+  <!-- 8. 好きなこと・興味関心 -->
+  <section class="card" id="sec-likes">
+    <div class="card-head">
+      <div class="icon-badge" data-icon="likes"><span class="icon-chip">8</span></div>
+      <div><h2>好きな事・興味関心・遊び</h2><div class="card-sub">現在の様子・好みの変遷・苦手なこと</div></div>
+    </div>
+    <div class="field">
+      <label>現在の好きなこと・興味関心・遊び</label>
+      <textarea data-field-scalar="likes.current" rows="2"></textarea>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">好みの変遷 <span class="badge-new">新規追加</span></div>
+      <div class="age-hint">年齢とともに好きだったものがどう変わってきたか、時系列で記録できます。</div>
+      <div class="repeat-list" id="list-preferenceHistory" data-repeater="preferenceHistory" data-template="tmpl-preferenceHistory"></div>
+      <button type="button" class="add-btn" data-add-for="list-preferenceHistory">＋ 好みの変遷を追加</button>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">苦手（場所・こと・もの）</div>
+      <textarea data-field-scalar="likes.dislike" rows="2"></textarea>
+    </div>
+    <div class="subsection">
+      <div class="subsection-title">その他</div>
+      <textarea data-field-scalar="likes.other" rows="2"></textarea>
+    </div>
+  </section>
+
+  <!-- 9. 学校生活でサポートが必要な点 -->
+  <section class="card" id="sec-school">
+    <div class="card-head">
+      <div class="icon-badge" data-icon="school"><span class="icon-chip">9</span></div>
+      <div><h2>学校生活でサポートが必要な点</h2><div class="card-sub">学習・生活・指示</div></div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-title">学習</div>
+      <div class="field"><label>サポートが必要な点</label><textarea data-field-scalar="school.studyNeeds" rows="2"></textarea></div>
+      <div class="field"><label>学習の中でも好きなこと・得意なこと <span class="badge-new">追加</span></label><textarea data-field-scalar="school.studyGood" rows="2"></textarea></div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-title">生活</div>
+      <div class="field"><label>サポートが必要な点</label><textarea data-field-scalar="school.lifeNeeds" rows="2"></textarea></div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-title">指示</div>
+      <div class="field"><label>伝え方の工夫</label><textarea data-field-scalar="school.instructionTips" rows="2"></textarea></div>
+    </div>
+  </section>
+
+  <!-- 10. 連絡先等 -->
+  <section class="card" id="sec-contact">
+    <div class="card-head">
+      <div class="icon-badge" data-icon="contact"><span class="icon-chip">10</span></div>
+      <div><h2>連絡先等</h2><div class="card-sub">住所・緊急連絡先</div></div>
+    </div>
+    <div class="row-grid">
+      <div class="field">
+        <label for="contactZip">郵便番号</label>
+        <input type="text" id="contactZip" data-field-scalar="contact.zip" placeholder="〒XXX-XXXX">
+      </div>
+      <div class="field">
+        <label for="contactAddress">住所</label>
+        <input type="text" id="contactAddress" data-field-scalar="contact.address">
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-title">緊急連絡先</div>
+      <div class="repeat-list" id="list-emergencyContacts" data-repeater="emergencyContacts" data-template="tmpl-emergencyContacts"></div>
+      <button type="button" class="add-btn" data-add-for="list-emergencyContacts">＋ 連絡先を追加</button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  入力内容はお使いのブラウザ内にのみ保存されます（外部サーバーへの送信はありません）。<br>
+  様式構成は「発達っ子ママキャリアメンター」のサポートブックを参考に作成。
+</footer>
+
+<div class="modal-backdrop" id="exportModal">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>書き出したテキスト</h3>
+      <button class="modal-close" id="closeExportModal" aria-label="閉じる">×</button>
+    </div>
+    <div class="modal-body">
+      <textarea id="exportTextArea" readonly></textarea>
+    </div>
+    <div class="modal-foot">
+      <button class="btn" id="btnCopyText">コピー</button>
+      <button class="btn btn-primary" id="btnDownloadText">テキストファイルを保存</button>
+    </div>
+  </div>
+</div>
+
+<!-- Templates for repeatable rows -->
+<template id="tmpl-family">
+  <div class="repeat-row" data-row>
+    <div class="row-grid">
+      <div class="field"><label>続柄</label><input type="text" data-field="relation" placeholder="例：父"></div>
+      <div class="field"><label>お名前（任意）</label><input type="text" data-field="person"></div>
+      <div class="field"><label>年齢・学年など</label><input type="text" data-field="note" placeholder="例：中学1年"></div>
+    </div>
+    <button type="button" class="row-remove" data-remove>この項目を削除</button>
+  </div>
+</template>
+
+<template id="tmpl-techo">
+  <div class="repeat-row" data-row>
+    <div class="row-grid">
+      <div class="field"><label>種類</label><input type="text" data-field="type" placeholder="例：療育手帳"></div>
+      <div class="field"><label>等級</label><input type="text" data-field="grade" placeholder="例：軽度C"></div>
+      <div class="field"><label>取得日</label><input type="date" data-field="date"></div>
+      <div class="field"><label>取得時の年齢</label>
+        <div class="age-pair"><input type="number" min="0" max="25" data-field="ageY"><span>歳</span><input type="number" min="0" max="11" data-field="ageM"><span>か月</span></div>
+      </div>
+    </div>
+    <div class="field"><label>備考</label><input type="text" data-field="note"></div>
+    <button type="button" class="row-remove" data-remove>この項目を削除</button>
+  </div>
+</template>
+
+<template id="tmpl-diagnosis">
+  <div class="repeat-row" data-row>
+    <div class="row-grid">
+      <div class="field"><label>診断日</label><input type="date" data-field="date"></div>
+      <div class="field"><label>当時の年齢</label>
+        <div class="age-pair"><input type="number" min="0" max="25" data-field="ageY"><span>歳</span><input type="number" min="0" max="11" data-field="ageM"><span>か月</span></div>
+      </div>
+      <div class="field"><label>検査名</label><input type="text" data-field="testName" placeholder="例：新版K式発達検査"></div>
+      <div class="field"><label>実施機関</label><input type="text" data-field="org" placeholder="例：○○こどもクリニック"></div>
+    </div>
+    <div class="field"><label>結果内容</label><textarea data-field="result" rows="2"></textarea></div>
+    <button type="button" class="row-remove" data-remove>この項目を削除</button>
+  </div>
+</template>
+
+<template id="tmpl-therapy">
+  <div class="repeat-row" data-row>
+    <div class="row-grid">
+      <div class="field"><label>施設名</label><input type="text" data-field="facility"></div>
+      <div class="field"><label>種類</label><input type="text" data-field="type" placeholder="例：OT／ST／心理"></div>
+      <div class="field"><label>頻度</label><input type="text" data-field="frequency" placeholder="例：月2回"></div>
+      <div class="field"><label class="checkline"><input type="checkbox" data-field="ongoing" data-checkbox>継続中</label></div>
+    </div>
+    <div class="row-grid">
+      <div class="field"><label>開始時の年齢</label>
+        <div class="age-pair"><input type="number" min="0" max="25" data-field="startAgeY"><span>歳</span><input type="number" min="0" max="11" data-field="startAgeM"><span>か月</span></div>
+      </div>
+      <div class="field"><label>終了時の年齢（継続中は空欄可）</label>
+        <div class="age-pair"><input type="number" min="0" max="25" data-field="endAgeY"><span>歳</span><input type="number" min="0" max="11" data-field="endAgeM"><span>か月</span></div>
+      </div>
+    </div>
+    <div class="field"><label>備考</label><textarea data-field="note" rows="2"></textarea></div>
+    <button type="button" class="row-remove" data-remove>この項目を削除</button>
+  </div>
+</template>
+
+<template id="tmpl-therapyProgress">
+  <div class="repeat-row" data-row>
+    <div class="row-grid">
+      <div class="field"><label>時期のラベル</label><input type="text" data-field="label" placeholder="例：通い始め／1年後／現在"></div>
+      <div class="field"><label>当時の年齢</label>
+        <div class="age-pair"><input type="number" min="0" max="25" data-field="ageY"><span>歳</span><input type="number" min="0" max="11" data-field="ageM"><span>か月</span></div>
+      </div>
+      <div class="field"><label>対象（ST／OT／放デイ等）</label><input type="text" data-field="target"></div>
+    </div>
+    <div class="field"><label>できていたこと</label><textarea data-field="good" rows="2"></textarea></div>
+    <div class="field"><label>課題だったこと</label><textarea data-field="challenge" rows="2"></textarea></div>
+    <div class="field change-field"><label>以前と比べて変わった点 <span class="badge-new">追加</span></label><textarea data-field="change" rows="2"></textarea></div>
+    <button type="button" class="row-remove" data-remove>この項目を削除</button>
+  </div>
+</template>
+
+<template id="tmpl-homeTips">
+  <div class="repeat-row" data-row>
+    <div class="field"><label>工夫の内容</label><textarea data-field="content" rows="2" placeholder="例：見通しが立つよう1日のスケジュールを絵カードで提示している"></textarea></div>
+    <div class="field"><label>使うタイミング</label><input type="text" data-field="timing" placeholder="例：外出前、活動の切り替え時など"></div>
+    <button type="button" class="row-remove" data-remove>この項目を削除</button>
+  </div>
+</template>
+
+<template id="tmpl-switchItems">
+  <div class="repeat-row" data-row>
+    <div class="row-grid">
+      <div class="field"><label>アイテム名</label><input type="text" data-field="item" placeholder="例：お気に入りのタオル、砂時計"></div>
+      <div class="field"><label>使い方・効果</label><input type="text" data-field="usage"></div>
+    </div>
+    <button type="button" class="row-remove" data-remove>この項目を削除</button>
+  </div>
+</template>
+
+<template id="tmpl-callouts">
+  <div class="repeat-row" data-row>
+    <div class="row-grid">
+      <div class="field"><label>場面・状況</label><input type="text" data-field="situation" placeholder="例：療育の待ち時間で癇癪が起きたとき"></div>
+      <div class="field"><label>声かけの言葉</label><input type="text" data-field="phrase" placeholder="例：「あと3つ数えたらおしまいだよ」"></div>
+      <div class="field"><label>実施した場所</label><input type="text" data-field="place" placeholder="例：家庭／学校／放課後等デイサービス"></div>
+    </div>
+    <div class="field"><label>効果・様子</label><textarea data-field="effect" rows="2"></textarea></div>
+    <button type="button" class="row-remove" data-remove>この項目を削除</button>
+  </div>
+</template>
+
+<template id="tmpl-relationships">
+  <div class="repeat-row" data-row>
+    <div class="field"><label>相手</label><input type="text" data-field="person"></div>
+    <div class="field"><label>様子</label><textarea data-field="behavior" rows="2"></textarea></div>
+    <div class="field change-field"><label>以前と比べて変わった点 <span class="badge-new">追加</span></label><textarea data-field="change" rows="2"></textarea></div>
+    <button type="button" class="row-remove" data-remove>この項目を削除</button>
+  </div>
+</template>
+
+<template id="tmpl-preferenceHistory">
+  <div class="repeat-row" data-row>
+    <div class="row-grid">
+      <div class="field"><label>年齢</label>
+        <div class="age-pair"><input type="number" min="0" max="25" data-field="ageY"><span>歳</span><input type="number" min="0" max="11" data-field="ageM"><span>か月</span></div>
+      </div>
+      <div class="field"><label>当時好きだったこと・もの</label><input type="text" data-field="content"></div>
+    </div>
+    <button type="button" class="row-remove" data-remove>この項目を削除</button>
+  </div>
+</template>
+
+<template id="tmpl-emergencyContacts">
+  <div class="repeat-row" data-row>
+    <div class="row-grid">
+      <div class="field"><label>続柄</label><input type="text" data-field="relation" placeholder="例：母携帯"></div>
+      <div class="field"><label>電話番号</label><input type="tel" data-field="phone" placeholder="080-XXXX-XXXX"></div>
+      <div class="field"><label>備考</label><input type="text" data-field="note"></div>
+    </div>
+    <button type="button" class="row-remove" data-remove>この項目を削除</button>
+  </div>
+</template>
+
+<script>
+(function () {
+  "use strict";
+  var STORAGE_KEY = "supportBookData_v1";
+
+  var SECTION_LABELS = {
+    "sec-cover": "0. 表紙・基本情報",
+    "sec-profile": "1. プロフィール",
+    "sec-progress": "2. 療育の様子",
+    "sec-tips": "3. 困ったときの工夫・声かけ",
+    "sec-trait1": "4. 特性①（身辺自立・時間管理・集団生活）",
+    "sec-trait2": "5. 特性②（言語・こだわり）",
+    "sec-relationships": "6. 人とのかかわり",
+    "sec-trait3": "7. 特性③（運動・文字数字色）",
+    "sec-likes": "8. 好きな事・興味関心",
+    "sec-school": "9. 学校生活でのサポート",
+    "sec-contact": "10. 連絡先等"
+  };
+
+  var DEFAULT_RELATIONSHIPS = ["友達", "親", "兄弟", "学校の先生", "デイサービスの方", "初対面の大人", "一般の人"];
+
+  var ICONS = {
+    cover: '<path d="M12 5.2C10 3.7 6.6 3.1 4 4.1v14c2.6-1 6-.4 8 1.1V5.2Z"/><path d="M12 5.2c2-1.5 5.4-2.1 8-1.1v14c-2.6-1-6-.4-8 1.1V5.2Z"/><path d="M12 8.6c.4-.7 1.2-1.1 2-.9.9.2 1.4 1 1.2 1.9-.2 1.1-1.5 1.8-3.2 2.9-1.7-1.1-3-1.8-3.2-2.9-.2-.9.3-1.7 1.2-1.9.8-.2 1.6.2 2 .9Z" style="fill:var(--highlight);stroke:none"/>',
+    profile: '<path d="M4 11.2 12 4l8 7.2"/><path d="M6.2 10.3V20h4.8v-5.2h2V20h4.8v-9.7"/>',
+    progress: '<path d="M12 20.5V11.8"/><path d="M12 13c0-3.1-2.3-5.2-5.7-5.2-.4 3.4 2.1 5.2 5.7 5.2Z" style="fill:var(--accent-soft)"/><path d="M12 10.8c0-3.1 2.3-5.2 5.7-5.2.4 3.4-2.1 5.2-5.7 5.2Z" style="fill:var(--accent-soft)"/>',
+    tips: '<path d="M12 3.2c4.6 0 8.3 3.5 8.3 7.7H3.7c0-4.2 3.7-7.7 8.3-7.7Z"/><path d="M12 3.2v15.9a2 2 0 0 1-3.7 1.2"/><line x1="3.7" y1="10.9" x2="20.3" y2="10.9"/>',
+    trait1: '<rect x="5" y="3.8" width="14" height="16.4" rx="2.2"/><path d="M8 9.2l1.6 1.6L12.2 8"/><line x1="8" y1="14.2" x2="16" y2="14.2"/><line x1="8" y1="17.1" x2="14" y2="17.1"/>',
+    trait2: '<path d="M4 6h16v10.2H9.2l-4 4v-4H4Z"/><line x1="7.6" y1="10" x2="16.4" y2="10"/><line x1="7.6" y1="13.1" x2="13" y2="13.1"/>',
+    relationships: '<circle cx="8" cy="7.2" r="2.3"/><circle cx="16" cy="7.2" r="2.3"/><path d="M4 20.3c0-3.1 2-5.3 4-5.3s4 2.2 4 5.3"/><path d="M12 20.3c0-3.1 2-5.3 4-5.3s4 2.2 4 5.3"/>',
+    trait3: '<path d="M15 3.9 20.1 9l-8.6 8.6c-1 1-2.6 1.5-4 1.2l-3-.6.6-3c.3-1.5.9-3 1.9-4Z"/><line x1="13" y1="5.9" x2="18.1" y2="11"/>',
+    likes: '<path d="M12 20.6c-5.1-3.8-8.6-6.9-8.6-10.8 0-2.7 2.1-4.9 4.8-4.9 1.6 0 3 .8 3.8 2 .8-1.2 2.2-2 3.8-2 2.7 0 4.8 2.2 4.8 4.9 0 3.9-3.5 7-8.6 10.8Z" style="fill:var(--highlight);stroke:none"/>',
+    school: '<path d="M4 20l1-5.2L15 4.6l4.4 4.4L9.2 19.2 4 20Z"/><line x1="13.2" y1="6.8" x2="17.6" y2="11.2"/>',
+    contact: '<rect x="3" y="6.2" width="18" height="11.6" rx="2"/><path d="M4 7.4l8 5.8 8-5.8"/>'
+  };
+
+  function initIcons() {
+    Object.keys(ICONS).forEach(function (key) {
+      var badge = document.querySelector('.icon-badge[data-icon="' + key + '"]');
+      if (!badge) return;
+      var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("viewBox", "0 0 24 24");
+      svg.setAttribute("style", "stroke:var(--accent); fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round");
+      svg.innerHTML = ICONS[key];
+      badge.insertBefore(svg, badge.firstChild);
+    });
+  }
+
+  function $(sel, root) { return (root || document).querySelector(sel); }
+  function $all(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+
+  function initNav() {
+    var sel = $("#navJump");
+    Object.keys(SECTION_LABELS).forEach(function (id) {
+      var opt = document.createElement("option");
+      opt.value = id;
+      opt.textContent = SECTION_LABELS[id];
+      sel.appendChild(opt);
+    });
+    sel.addEventListener("change", function () {
+      if (!sel.value) return;
+      var target = document.getElementById(sel.value);
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      sel.value = "";
+    });
+  }
+
+  function bindRowEvents(row) {
+    var removeBtn = row.querySelector("[data-remove]");
+    if (removeBtn) {
+      removeBtn.addEventListener("click", function () {
+        row.remove();
+        scheduleSave();
+      });
+    }
+    $all("input, textarea, select", row).forEach(function (el) {
+      el.addEventListener("input", scheduleSave);
+      el.addEventListener("change", scheduleSave);
+    });
+  }
+
+  function addRow(containerId) {
+    var container = document.getElementById(containerId);
+    var tmplId = container.getAttribute("data-template");
+    var tmpl = document.getElementById(tmplId);
+    var frag = tmpl.content.cloneNode(true);
+    var row = frag.querySelector("[data-row]");
+    bindRowEvents(row);
+    container.appendChild(frag);
+    return row;
+  }
+
+  function initAddButtons() {
+    $all("[data-add-for]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        addRow(btn.getAttribute("data-add-for"));
+        scheduleSave();
+      });
+    });
+  }
+
+  function initScalarFields() {
+    $all("[data-field-scalar]").forEach(function (el) {
+      el.addEventListener("input", scheduleSave);
+      el.addEventListener("change", scheduleSave);
+    });
+  }
+
+  function initAgeCalc() {
+    var birth = $("#coverBirthdate");
+    var out = $("#coverAgeDisplay");
+    function update() {
+      if (!birth.value) { out.textContent = "生年月日を入力すると表示されます"; return; }
+      var b = new Date(birth.value);
+      if (isNaN(b.getTime())) { out.textContent = "生年月日を入力すると表示されます"; return; }
+      var now = new Date();
+      var years = now.getFullYear() - b.getFullYear();
+      var months = now.getMonth() - b.getMonth();
+      if (now.getDate() < b.getDate()) months -= 1;
+      if (months < 0) { years -= 1; months += 12; }
+      if (years < 0) { out.textContent = "生年月日を入力すると表示されます"; return; }
+      out.textContent = years + "歳" + months + "か月";
+    }
+    birth.addEventListener("input", update);
+    update();
+  }
+
+  function initTopbarName() {
+    var nameEl = $("#coverName");
+    var target = $("#topbarChildName");
+    function update() { target.textContent = nameEl.value ? "｜" + nameEl.value : ""; }
+    nameEl.addEventListener("input", update);
+    update();
+  }
+
+  function collectAll() {
+    var data = { scalar: {}, repeaters: {} };
+    $all("[data-field-scalar]").forEach(function (el) {
+      data.scalar[el.getAttribute("data-field-scalar")] = el.value;
+    });
+    $all(".repeat-list").forEach(function (container) {
+      var key = container.getAttribute("data-repeater");
+      data.repeaters[key] = $all("[data-row]", container).map(function (row) {
+        var rowData = {};
+        $all("[data-field]", row).forEach(function (el) {
+          if (el.hasAttribute("data-checkbox")) rowData[el.getAttribute("data-field")] = el.checked;
+          else rowData[el.getAttribute("data-field")] = el.value;
+        });
+        return rowData;
+      });
+    });
+    return data;
+  }
+
+  function restoreAll(data) {
+    if (!data) return false;
+    Object.keys(data.scalar || {}).forEach(function (k) {
+      var el = document.querySelector('[data-field-scalar="' + k + '"]');
+      if (el) el.value = data.scalar[k];
+    });
+    Object.keys(data.repeaters || {}).forEach(function (key) {
+      var container = document.querySelector('.repeat-list[data-repeater="' + key + '"]');
+      if (!container) return;
+      container.innerHTML = "";
+      (data.repeaters[key] || []).forEach(function (rowData) {
+        var row = addRow(container.id);
+        Object.keys(rowData).forEach(function (f) {
+          var el = row.querySelector('[data-field="' + f + '"]');
+          if (!el) return;
+          if (el.hasAttribute("data-checkbox")) el.checked = !!rowData[f];
+          else el.value = rowData[f];
+        });
+      });
+    });
+    return true;
+  }
+
+  function initDefaultRows() {
+    ["list-family", "list-techo", "list-diagnosis", "list-therapy", "list-therapyProgress",
+     "list-homeTips", "list-switchItems", "list-callouts", "list-preferenceHistory", "list-emergencyContacts"
+    ].forEach(function (id) { addRow(id); });
+
+    DEFAULT_RELATIONSHIPS.forEach(function (person) {
+      var row = addRow("list-relationships");
+      row.querySelector('[data-field="person"]').value = person;
+    });
+  }
+
+  var saveTimer = null;
+  function scheduleSave() {
+    var status = $("#saveStatus");
+    status.textContent = "編集中…";
+    status.classList.remove("saved");
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function () {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(collectAll()));
+        var now = new Date();
+        status.textContent = "保存済み " + now.getHours() + ":" + String(now.getMinutes()).padStart(2, "0");
+        status.classList.add("saved");
+      } catch (e) {
+        status.textContent = "保存に失敗しました";
+      }
+    }, 500);
+  }
+
+  function loadFromStorage() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return false;
+      var data = JSON.parse(raw);
+      return restoreAll(data);
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function fieldLabel(key) {
+    var labels = {
+      "cover.name": "お子さんの氏名", "cover.kana": "ふりがな", "cover.birthdate": "生年月日",
+      "cover.blood": "血液型", "cover.author": "作成者", "cover.createdDate": "初版作成日",
+      "cover.updatedDate": "最終更新日", "cover.summary": "最近の変化・成長",
+      "profile.school": "通っている園・学校名", "profile.grade": "学年・クラス",
+      "profile.birthCondition": "出生時の状況",
+      "medical.history": "既往歴", "medical.treatment": "治療中の病気・服薬",
+      "trait1.selfcareGood": "身辺自立｜できている点", "trait1.selfcareSupport": "身辺自立｜サポートが必要な点", "trait1.selfcareChange": "身辺自立｜以前と比べて変わった点",
+      "trait1.timeGood": "時間管理｜できている点", "trait1.timeSupport": "時間管理｜サポートが必要な点", "trait1.timeChange": "時間管理｜以前と比べて変わった点",
+      "trait1.groupGood": "集団生活｜できている点", "trait1.groupSupport": "集団生活｜サポートが必要な点", "trait1.groupChange": "集団生活｜以前と比べて変わった点",
+      "trait2.langGood": "言語コミュニケーション｜できている点", "trait2.langSupport": "言語コミュニケーション｜サポートが必要な点", "trait2.langChange": "言語コミュニケーション｜以前と比べて変わった点",
+      "trait2.habitGood": "こだわり・習慣｜できている点", "trait2.habitSupport": "こだわり・習慣｜サポートが必要な点", "trait2.habitChange": "こだわり・習慣｜以前と比べて変わった点",
+      "trait3.motorGood": "運動｜できている点", "trait3.motorSupport": "運動｜サポートが必要な点", "trait3.motorChange": "運動｜以前と比べて変わった点",
+      "trait3.letterGood": "文字・数字・色など｜できている点", "trait3.letterSupport": "文字・数字・色など｜サポートが必要な点", "trait3.letterChange": "文字・数字・色など｜以前と比べて変わった点",
+      "likes.current": "現在の好きなこと・興味関心・遊び", "likes.dislike": "苦手（場所・こと・もの）", "likes.other": "その他",
+      "school.studyNeeds": "学習｜サポートが必要な点", "school.studyGood": "学習｜好きなこと・得意なこと",
+      "school.lifeNeeds": "生活｜サポートが必要な点", "school.instructionTips": "指示｜伝え方の工夫",
+      "contact.zip": "郵便番号", "contact.address": "住所"
+    };
+    return labels[key] || key;
+  }
+
+  var SCALAR_SECTIONS = [
+    { title: "表紙・基本情報", keys: ["cover.name", "cover.kana", "cover.birthdate", "cover.blood", "cover.author", "cover.createdDate", "cover.updatedDate", "cover.summary"] },
+    { title: "プロフィール", keys: ["profile.school", "profile.grade", "profile.birthCondition", "medical.history", "medical.treatment"] },
+    { title: "親から見た特性①", keys: ["trait1.selfcareGood", "trait1.selfcareSupport", "trait1.selfcareChange", "trait1.timeGood", "trait1.timeSupport", "trait1.timeChange", "trait1.groupGood", "trait1.groupSupport", "trait1.groupChange"] },
+    { title: "親から見た特性②", keys: ["trait2.langGood", "trait2.langSupport", "trait2.langChange", "trait2.habitGood", "trait2.habitSupport", "trait2.habitChange"] },
+    { title: "親から見た特性③", keys: ["trait3.motorGood", "trait3.motorSupport", "trait3.motorChange", "trait3.letterGood", "trait3.letterSupport", "trait3.letterChange"] },
+    { title: "好きな事・興味関心", keys: ["likes.current", "likes.dislike", "likes.other"] },
+    { title: "学校生活でのサポート", keys: ["school.studyNeeds", "school.studyGood", "school.lifeNeeds", "school.instructionTips"] },
+    { title: "連絡先等", keys: ["contact.zip", "contact.address"] }
+  ];
+
+  var REPEATER_META = {
+    family: { title: "家族構成", fields: [["relation", "続柄"], ["person", "氏名"], ["note", "備考"]] },
+    techo: { title: "手帳類", fields: [["type", "種類"], ["grade", "等級"], ["date", "取得日"], ["ageY", "年齢(歳)"], ["ageM", "(か月)"], ["note", "備考"]] },
+    diagnosis: { title: "診断結果", fields: [["date", "診断日"], ["ageY", "年齢(歳)"], ["ageM", "(か月)"], ["testName", "検査名"], ["org", "実施機関"], ["result", "結果内容"]] },
+    therapy: { title: "療育歴", fields: [["facility", "施設名"], ["type", "種類"], ["startAgeY", "開始(歳)"], ["startAgeM", "(か月)"], ["endAgeY", "終了(歳)"], ["endAgeM", "(か月)"], ["ongoing", "継続中"], ["frequency", "頻度"], ["note", "備考"]] },
+    therapyProgress: { title: "療育の様子", fields: [["label", "時期"], ["ageY", "年齢(歳)"], ["ageM", "(か月)"], ["target", "対象"], ["good", "できていたこと"], ["challenge", "課題だったこと"], ["change", "変わった点"]] },
+    homeTips: { title: "家庭での工夫", fields: [["content", "工夫の内容"], ["timing", "使うタイミング"]] },
+    switchItems: { title: "気持ちの切り替えアイテム", fields: [["item", "アイテム名"], ["usage", "使い方・効果"]] },
+    callouts: { title: "声かけの工夫（成功事例）", fields: [["situation", "場面・状況"], ["phrase", "声かけの言葉"], ["place", "実施場所"], ["effect", "効果・様子"]] },
+    relationships: { title: "人とのかかわり", fields: [["person", "相手"], ["behavior", "様子"], ["change", "変わった点"]] },
+    preferenceHistory: { title: "好みの変遷", fields: [["ageY", "年齢(歳)"], ["ageM", "(か月)"], ["content", "当時好きだったこと"]] },
+    emergencyContacts: { title: "緊急連絡先", fields: [["relation", "続柄"], ["phone", "電話番号"], ["note", "備考"]] }
+  };
+
+  function buildExportText() {
+    var data = collectAll();
+    var lines = [];
+    var childName = data.scalar["cover.name"] || "（氏名未入力）";
+    lines.push("========================================");
+    lines.push("サポートブック：" + childName);
+    lines.push("書き出し日時：" + new Date().toLocaleString("ja-JP"));
+    lines.push("========================================");
+
+    SCALAR_SECTIONS.forEach(function (section) {
+      var body = [];
+      section.keys.forEach(function (k) {
+        var v = data.scalar[k];
+        if (v) body.push("・" + fieldLabel(k) + "：" + v);
+      });
+      if (body.length) {
+        lines.push("");
+        lines.push("【" + section.title + "】");
+        lines.push.apply(lines, body);
+      }
+    });
+
+    Object.keys(REPEATER_META).forEach(function (key) {
+      var rows = data.repeaters[key] || [];
+      var meta = REPEATER_META[key];
+      var nonEmptyRows = rows.filter(function (r) {
+        return Object.keys(r).some(function (f) { return r[f] !== "" && r[f] !== false; });
+      });
+      if (!nonEmptyRows.length) return;
+      lines.push("");
+      lines.push("【" + meta.title + "】");
+      nonEmptyRows.forEach(function (row, idx) {
+        var parts = meta.fields
+          .filter(function (f) { return row[f[0]] !== "" && row[f[0]] !== undefined; })
+          .map(function (f) {
+            var v = row[f[0]];
+            if (v === true) v = "はい";
+            if (v === false) return null;
+            return f[1] + "=" + v;
+          })
+          .filter(Boolean);
+        if (parts.length) lines.push((idx + 1) + ". " + parts.join(" / "));
+      });
+    });
+
+    return lines.join("\n");
+  }
+
+  function downloadBlob(content, filename, mime) {
+    var blob = new Blob([content], { type: mime });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  }
+
+  function safeFileName(base) {
+    var name = ($("#coverName").value || "サポートブック").trim();
+    var date = new Date().toISOString().slice(0, 10);
+    return (name + "_" + base + "_" + date).replace(/[\\/:*?"<>|]/g, "");
+  }
+
+  function initExportImport() {
+    var modal = $("#exportModal");
+    $("#btnExportText").addEventListener("click", function () {
+      $("#exportTextArea").value = buildExportText();
+      modal.classList.add("open");
+    });
+    $("#closeExportModal").addEventListener("click", function () { modal.classList.remove("open"); });
+    modal.addEventListener("click", function (e) { if (e.target === modal) modal.classList.remove("open"); });
+    $("#btnCopyText").addEventListener("click", function () {
+      var ta = $("#exportTextArea");
+      ta.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      if (navigator.clipboard) navigator.clipboard.writeText(ta.value).catch(function () {});
+    });
+    $("#btnDownloadText").addEventListener("click", function () {
+      downloadBlob($("#exportTextArea").value, safeFileName("記録") + ".txt", "text/plain;charset=utf-8");
+    });
+
+    $("#btnExportJson").addEventListener("click", function () {
+      downloadBlob(JSON.stringify(collectAll(), null, 2), safeFileName("データ") + ".json", "application/json");
+    });
+
+    $("#btnImportJson").addEventListener("click", function () { $("#fileImport").click(); });
+    $("#fileImport").addEventListener("change", function (e) {
+      var file = e.target.files[0];
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function () {
+        try {
+          var data = JSON.parse(reader.result);
+          restoreAll(data);
+          scheduleSave();
+          initAgeCalc();
+          initTopbarName();
+        } catch (err) {
+          alert("JSONファイルの読み込みに失敗しました。ファイルの内容をご確認ください。");
+        }
+      };
+      reader.readAsText(file);
+      e.target.value = "";
+    });
+
+    $("#btnPrint").addEventListener("click", function () {
+      var embedded = window.self !== window.top;
+      if (embedded) {
+        var url = new URL(window.location.href);
+        url.searchParams.set("autoprint", "1");
+        var opened = window.open(url.toString(), "_blank");
+        if (!opened) {
+          alert("ポップアップがブロックされました。ブラウザのアドレスバーにあるこのページのURLをコピーし、新しいタブで開いてから印刷してください。");
+        }
+      } else {
+        window.print();
+      }
+    });
+
+    $("#btnClear").addEventListener("click", function () {
+      if (!confirm("入力内容をすべて消去します。よろしいですか？この操作は元に戻せません。")) return;
+      localStorage.removeItem(STORAGE_KEY);
+      location.reload();
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    initIcons();
+    initNav();
+    initAddButtons();
+    initScalarFields();
+
+    var restored = loadFromStorage();
+    if (!restored) initDefaultRows();
+
+    initAgeCalc();
+    initTopbarName();
+    initExportImport();
+
+    if (new URLSearchParams(window.location.search).get("autoprint") === "1") {
+      setTimeout(function () { window.print(); }, 500);
+    }
+  });
+})();
+</script>
