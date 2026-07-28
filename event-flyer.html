@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>発達障害の子どもと家族のための対話イベント｜フライヤー</title>
+</head>
+<body>
+<style>
+  :root {
+    --ink: #2B2A3D;
+    --ink-soft: #5C5A72;
+    --paper: #F5E9DA;
+    --hairline: rgba(43, 42, 61, 0.18);
+    --amber: #E3A857;
+    --amber-deep: #B97F2E;
+    --rose: #C97B84;
+    --sage: #7C9A82;
+
+    --font-display: "Hiragino Mincho ProN", "YuMincho", "Yu Mincho", "Noto Serif JP", serif;
+    --font-body: "Hiragino Kaku Gothic ProN", "YuGothic", "Yu Gothic", "Noto Sans JP", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #DAD3C4;
+    font-family: var(--font-body);
+    color: var(--ink);
+    display: flex;
+    justify-content: center;
+    padding: 10mm 0;
+  }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--paper);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    padding: 12mm 15mm 10mm;
+    position: relative;
+  }
+  @page { size: A4; margin: 0; }
+  @media print {
+    body { background: none; padding: 0; }
+    .page { box-shadow: none; width: auto; min-height: auto; }
+  }
+
+  .eyebrow {
+    text-align: center;
+    font-size: 3mm;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+  }
+  h1 {
+    font-family: var(--font-display);
+    text-align: center;
+    font-size: 8mm;
+    line-height: 1.35;
+    margin: 2mm 0 0;
+    font-weight: 700;
+  }
+  .tagline {
+    text-align: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 6.5mm;
+    margin: 2mm 0 0;
+    background: linear-gradient(95deg, var(--amber) 0%, var(--rose) 55%, var(--sage) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .sub-line {
+    text-align: center;
+    font-size: 3.4mm;
+    color: var(--ink-soft);
+    margin: 1.5mm 0 0;
+  }
+
+  .illustration {
+    display: block;
+    width: 95mm;
+    height: auto;
+    margin: 3mm auto 0;
+    border-radius: 2mm;
+  }
+
+  .intro {
+    text-align: center;
+    font-size: 3.4mm;
+    line-height: 1.7;
+    max-width: 165mm;
+    margin: 2mm auto 0;
+    color: var(--ink);
+  }
+
+  .persp-row {
+    display: flex;
+    justify-content: center;
+    gap: 4mm;
+    margin: 2.5mm 0 0;
+  }
+  .persp-chip {
+    font-size: 3mm;
+    padding: 1.5mm 4mm;
+    border-radius: 99mm;
+    border: 0.3mm solid var(--hairline);
+    background: #FBF8F1;
+  }
+  .persp-chip--child { border-left: 1.2mm solid var(--amber); }
+  .persp-chip--parent { border-left: 1.2mm solid var(--rose); }
+  .persp-chip--support { border-left: 1.2mm solid var(--sage); }
+
+  hr.divider {
+    border: none;
+    border-top: 0.25mm solid var(--hairline);
+    margin: 3mm 0;
+  }
+
+  h2.section-title {
+    font-family: var(--font-display);
+    font-size: 4.4mm;
+    margin: 0 0 2.5mm;
+    text-align: center;
+  }
+
+  .program {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5mm;
+    max-width: 175mm;
+    margin: 0 auto;
+  }
+  .program-item {
+    display: flex;
+    gap: 3mm;
+    align-items: center;
+  }
+  .program-time {
+    flex: 0 0 20mm;
+    font-size: 3.1mm;
+    font-weight: 700;
+    color: var(--amber-deep);
+    align-self: flex-start;
+    margin-top: 0.5mm;
+  }
+  .program-body {
+    flex: 1 1 auto;
+  }
+  .program-body b {
+    font-size: 3.4mm;
+  }
+  .program-body p {
+    margin: 0.5mm 0 0;
+    font-size: 2.9mm;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .speaker-card {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 2mm;
+    padding-left: 3mm;
+    border-left: 0.25mm solid var(--hairline);
+  }
+  .speaker-avatar {
+    flex: 0 0 auto;
+    width: 12mm;
+    height: 12mm;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 4.5mm;
+    font-weight: 700;
+    color: #fff;
+    object-fit: cover;
+  }
+  .speaker-avatar--child { background: var(--amber-deep); }
+  .speaker-avatar--support { background: var(--sage); }
+  .speaker-meta { line-height: 1.35; }
+  .speaker-role { font-size: 2.2mm; color: var(--ink-soft); }
+  .speaker-name { font-size: 2.9mm; font-weight: 700; }
+
+  .bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 42mm;
+    gap: 6mm;
+    align-items: start;
+    margin-top: 3mm;
+  }
+
+  .overview dl {
+    display: grid;
+    grid-template-columns: 16mm 1fr;
+    row-gap: 1.8mm;
+    column-gap: 3mm;
+    margin: 0;
+  }
+  .overview dt {
+    font-size: 2.9mm;
+    color: var(--ink-soft);
+    border-top: 0.25mm solid var(--hairline);
+    padding-top: 1.5mm;
+  }
+  .overview dd {
+    margin: 0;
+    font-size: 3.1mm;
+    border-top: 0.25mm solid var(--hairline);
+    padding-top: 1.5mm;
+    line-height: 1.45;
+  }
+  .overview .note {
+    margin-top: 2.5mm;
+    padding: 2mm 3mm;
+    background: rgba(227, 168, 87, 0.16);
+    border: 0.25mm solid rgba(227, 168, 87, 0.4);
+    border-radius: 1.5mm;
+    font-size: 2.9mm;
+  }
+
+  .apply-box {
+    text-align: center;
+    border: 0.3mm solid var(--hairline);
+    border-radius: 2mm;
+    padding: 3mm 2mm;
+    background: #FBF8F1;
+  }
+  .apply-box img {
+    width: 34mm;
+    height: 34mm;
+    display: block;
+    margin: 0 auto;
+  }
+  .apply-box p {
+    font-size: 2.7mm;
+    margin: 1.5mm 0 0;
+    line-height: 1.5;
+  }
+  .apply-box .apply-label {
+    font-weight: 700;
+    font-size: 3.2mm;
+    margin-bottom: 1.5mm;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 5mm;
+    padding-top: 3mm;
+    border-top: 0.3mm solid var(--hairline);
+  }
+  footer .message {
+    font-family: var(--font-display);
+    font-size: 3.8mm;
+    font-weight: 700;
+  }
+  footer .org {
+    margin-top: 1.5mm;
+    font-size: 2.7mm;
+    color: var(--ink-soft);
+  }
+</style>
+
+<div class="page">
+  <p class="eyebrow">発達っ子ママキャリアデザイン室 主催 ／ 対話イベント</p>
+  <h1>発達障害の子どもと家族のための対話イベント</h1>
+  <p class="tagline">知ることから、はじめよう。</p>
+  <p class="sub-line">発達障害当事者の声から、子どもの気持ちと関わり方を考える時間。</p>
+
+  <img class="illustration" src="assets/images/event-illustration-web.jpg" alt="対話をする3つの吹き出しと、ハートのついた家のイラスト">
+
+  <p class="intro">「もっと頑張らなきゃ」と、自分を追い詰めていませんか。子どもの気持ちも、親の想いも、先生や支援者の立場も。それぞれに見えているものは少しずつ違います。まずは知ることから、一緒に考えてみませんか。</p>
+
+  <div class="persp-row">
+    <span class="persp-chip persp-chip--child">子どもの立場</span>
+    <span class="persp-chip persp-chip--parent">親の立場</span>
+    <span class="persp-chip persp-chip--support">先生・支援者の立場</span>
+  </div>
+
+  <hr class="divider">
+
+  <h2 class="section-title">当日の流れ</h2>
+  <div class="program">
+    <div class="program-item">
+      <div class="program-time">13:00〜</div>
+      <div class="program-body">
+        <b>第1部　当事者が語る「私に見えていた世界」</b>
+        <p>発達障害当事者の方に、子どもの頃の体験や感じていたことをお話しいただきます。"頑張りすぎなくていい"と思えた瞬間も。</p>
+      </div>
+      <div class="speaker-card">
+        <div class="speaker-avatar speaker-avatar--child">ち</div>
+        <div class="speaker-meta">
+          <div class="speaker-role">発達障がい当事者</div>
+          <div class="speaker-name">ちこ</div>
+        </div>
+      </div>
+    </div>
+    <div class="program-item">
+      <div class="program-time">対話・質疑</div>
+      <div class="program-body">
+        <b>感じたことを、参加者同士で</b>
+        <p>お話を聞いて感じたことを共有しながら、それぞれの立場について考える時間です。</p>
+      </div>
+    </div>
+    <div class="program-item">
+      <div class="program-time">〜14:30</div>
+      <div class="program-body">
+        <b>第2部　サポートブック活用ミニワークショップ</b>
+        <p>家庭・学校・支援者で共有するためのツール「サポートブック」をご紹介し、簡単なワークを行います。</p>
+      </div>
+      <div class="speaker-card">
+        <div class="speaker-avatar speaker-avatar--support">陽</div>
+        <div class="speaker-meta">
+          <div class="speaker-role">発達っ子ママ<br>キャリアメンター</div>
+          <div class="speaker-name">小山陽子（あきこ）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="bottom-grid">
+    <div class="overview">
+      <h2 class="section-title" style="text-align:left;">開催概要</h2>
+      <dl>
+        <dt>日時</dt>
+        <dd>2026年9月27日（日）13:00〜14:30（受付12:30〜）</dd>
+        <dt>会場</dt>
+        <dd>ふるさと新座館 会議室</dd>
+        <dt>対象</dt>
+        <dd>発達障がい、もしくは疑いのあるお子さんの保護者の方／関心のある方／学校・園関係者／療育等施設関係者</dd>
+        <dt>定員</dt>
+        <dd>30名程度（先着順）</dd>
+        <dt>参加費</dt>
+        <dd>1,000円（お茶・お菓子代を含む）／ 当日、現金またはPayPayでお支払い</dd>
+      </dl>
+      <p class="note">お子様連れ歓迎です。ただし保育等はありませんので、お子様とご一緒にご参加ください。</p>
+    </div>
+    <div class="apply-box">
+      <p class="apply-label">参加を申し込む</p>
+      <img src="assets/images/event-qr.png" alt="Googleフォーム申込用QRコード">
+      <p>QRコードを読み取り、Googleフォームよりお申し込みください。</p>
+    </div>
+  </div>
+
+  <footer>
+    <p class="message">一人で抱え込まなくて、大丈夫。</p>
+    <p class="org">主催：発達っ子ママキャリアデザイン室　／　お問い合わせ：Instagram DM（@akiko_mentor_autism）</p>
+  </footer>
+</div>
+</body>
+</html>
