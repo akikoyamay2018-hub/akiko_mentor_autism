@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>発達障害の子どもと家族のための対話イベント｜知ることから、はじめよう。</title>
+<meta name="description" content="9/27(日)開催。発達障害当事者の声から、子どもの気持ちと関わり方を考える対話イベントの参加申込ページです。">
+</head>
+<body>
+<style>
+  :root {
+    --ink: #2B2A3D;
+    --ink-soft: #5C5A72;
+    --paper: #F3EFE6;
+    --paper-raised: #FBF8F1;
+    --hairline: rgba(43, 42, 61, 0.16);
+    --dusk: #201D38;
+    --dusk-deep: #14122A;
+    --dusk-ink: #F3EFE6;
+    --dusk-ink-soft: #C7C2D6;
+    --amber: #E3A857;
+    --amber-deep: #B97F2E;
+    --rose: #C97B84;
+    --rose-deep: #A15660;
+    --sage: #7C9A82;
+    --sage-deep: #557160;
+    --accent: var(--amber);
+
+    --font-display: "Hiragino Mincho ProN", "YuMincho", "Yu Mincho", "Noto Serif JP", serif;
+    --font-body: "Hiragino Kaku Gothic ProN", "YuGothic", "Yu Gothic", "Noto Sans JP", sans-serif;
+
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2.25rem;
+    --space-5: 3.5rem;
+    --space-6: 5.5rem;
+
+    --radius: 3px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #ECE7DA;
+      --ink-soft: #B6B0C4;
+      --paper: #17151F;
+      --paper-raised: #201D2C;
+      --hairline: rgba(236, 231, 218, 0.16);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #ECE7DA;
+    --ink-soft: #B6B0C4;
+    --paper: #17151F;
+    --paper-raised: #201D2C;
+    --hairline: rgba(236, 231, 218, 0.16);
+  }
+  :root[data-theme="light"] {
+    --ink: #2B2A3D;
+    --ink-soft: #5C5A72;
+    --paper: #F3EFE6;
+    --paper-raised: #FBF8F1;
+    --hairline: rgba(43, 42, 61, 0.16);
+  }
+
+  .lp-root * { box-sizing: border-box; }
+  .lp-root {
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .lp-root h1, .lp-root h2, .lp-root h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+    font-weight: 600;
+    margin: 0;
+  }
+  .lp-root p { margin: 0; }
+  .lp-root a { color: inherit; }
+  .lp-root img { max-width: 100%; display: block; }
+
+  .lp-section {
+    padding: var(--space-6) var(--space-3);
+  }
+  .lp-inner {
+    max-width: 46rem;
+    margin: 0 auto;
+  }
+  .lp-inner--wide {
+    max-width: 60rem;
+    margin: 0 auto;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    background: radial-gradient(120% 140% at 50% -10%, var(--dusk) 0%, var(--dusk-deep) 70%);
+    color: var(--dusk-ink);
+    padding: var(--space-6) var(--space-3) var(--space-5);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .hero-blobs {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    filter: blur(48px);
+    opacity: 0.55;
+  }
+  .hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+  }
+  .hero-blob--amber {
+    width: 34rem; height: 34rem;
+    background: var(--amber);
+    top: -12rem; left: -8rem;
+    animation: drift-a 26s ease-in-out infinite;
+  }
+  .hero-blob--rose {
+    width: 28rem; height: 28rem;
+    background: var(--rose);
+    top: 4rem; right: -10rem;
+    animation: drift-b 32s ease-in-out infinite;
+  }
+  .hero-blob--sage {
+    width: 26rem; height: 26rem;
+    background: var(--sage);
+    bottom: -14rem; left: 30%;
+    animation: drift-c 29s ease-in-out infinite;
+  }
+  @keyframes drift-a {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(4rem, 3rem) scale(1.1); }
+  }
+  @keyframes drift-b {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-3rem, 4rem) scale(0.95); }
+  }
+  @keyframes drift-c {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(2rem, -3rem) scale(1.08); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-blob { animation: none !important; }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 42rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    color: var(--dusk-ink-soft);
+    border: 1px solid rgba(243, 239, 230, 0.28);
+    border-radius: 999px;
+    padding: 0.4em 1em;
+    margin-bottom: var(--space-3);
+  }
+  .hero h1 {
+    font-size: clamp(1.7rem, 4.6vw, 2.5rem);
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+  .hero-tagline {
+    margin-top: var(--space-3);
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 5vw, 2.3rem);
+    font-weight: 600;
+    background: linear-gradient(95deg, var(--amber) 0%, var(--rose) 55%, var(--sage) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero-lead {
+    margin-top: var(--space-3);
+    color: var(--dusk-ink-soft);
+    font-size: 1.02rem;
+  }
+  .quick-facts {
+    margin-top: var(--space-4);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+  }
+  .quick-fact {
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+    background: rgba(243, 239, 230, 0.08);
+    border: 1px solid rgba(243, 239, 230, 0.2);
+    color: var(--dusk-ink);
+    padding: 0.5em 1em;
+    border-radius: 999px;
+  }
+  .cta-button {
+    display: inline-block;
+    margin-top: var(--space-4);
+    background: var(--amber);
+    color: var(--dusk-deep);
+    font-weight: 700;
+    text-decoration: none;
+    padding: 0.9em 2.4em;
+    border-radius: 999px;
+    letter-spacing: 0.04em;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 8px 24px -8px rgba(227, 168, 87, 0.5);
+  }
+  .cta-button:hover { transform: translateY(-2px); }
+  .cta-button:focus-visible {
+    outline: 3px solid var(--amber);
+    outline-offset: 3px;
+  }
+
+  /* ---------- EVENT VISUAL ---------- */
+  .event-visual {
+    background: #F5E9DA;
+    text-align: center;
+    padding: var(--space-5) var(--space-3) var(--space-4);
+  }
+  .event-visual img {
+    display: inline-block;
+    width: 26rem;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+  }
+  .event-visual p {
+    margin-top: var(--space-3);
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: #8A5A34;
+  }
+
+  /* ---------- LEAD MESSAGE ---------- */
+  .lead-message {
+    background: var(--paper);
+  }
+  .lead-message .lp-inner { max-width: 38rem; text-align: center; }
+  .lead-kicker {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 3vw, 1.6rem);
+    margin-bottom: var(--space-3);
+  }
+  .lead-message p + p { margin-top: 1.2em; }
+  .lead-emphasis {
+    font-weight: 600;
+    color: var(--amber-deep);
+  }
+
+  /* ---------- PERSPECTIVES ---------- */
+  .perspectives { background: var(--paper-raised); }
+  .perspectives .section-heading { text-align: center; margin-bottom: var(--space-2); }
+  .section-heading h2 {
+    font-size: clamp(1.4rem, 3.4vw, 1.9rem);
+  }
+  .section-sub {
+    text-align: center;
+    color: var(--ink-soft);
+    max-width: 34rem;
+    margin: var(--space-2) auto var(--space-5);
+    font-size: 0.98rem;
+  }
+  .persp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-3);
+  }
+  @media (max-width: 720px) {
+    .persp-grid { grid-template-columns: 1fr; }
+  }
+  .persp-card {
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    border-top: 4px solid var(--card-color);
+    border-radius: var(--radius);
+    padding: var(--space-4) var(--space-3);
+  }
+  .persp-card--child { --card-color: var(--amber); }
+  .persp-card--parent { --card-color: var(--rose); }
+  .persp-card--support { --card-color: var(--sage); }
+  .persp-mark {
+    width: 2.4rem; height: 2.4rem;
+    border-radius: 50%;
+    background: var(--card-color);
+    opacity: 0.85;
+    margin-bottom: var(--space-2);
+  }
+  .persp-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.6em;
+  }
+  .persp-card p {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+  .persp-note {
+    max-width: 36rem;
+    margin: var(--space-4) auto 0;
+    text-align: center;
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- FLOW ---------- */
+  .flow { background: var(--paper); }
+  .flow-list {
+    max-width: 38rem;
+    margin: var(--space-5) auto 0;
+    position: relative;
+  }
+  .flow-item {
+    position: relative;
+    padding-left: 2.6rem;
+    padding-bottom: var(--space-5);
+    border-left: 1px solid var(--hairline);
+  }
+  .flow-item:last-child { border-left-color: transparent; padding-bottom: 0; }
+  .flow-item::before {
+    content: "";
+    position: absolute;
+    left: -0.4rem;
+    top: 0.15rem;
+    width: 0.75rem; height: 0.75rem;
+    border-radius: 50%;
+    background: var(--flow-color, var(--amber));
+  }
+  .flow-time {
+    font-variant-numeric: tabular-nums;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+  }
+  .flow-item h3 {
+    margin-top: 0.35em;
+    font-size: 1.15rem;
+  }
+  .flow-item p {
+    margin-top: 0.6em;
+    color: var(--ink-soft);
+    font-size: 0.96rem;
+  }
+  .flow-item--1 { --flow-color: var(--amber); }
+  .flow-item--dialogue { --flow-color: var(--rose); }
+  .flow-item--2 { --flow-color: var(--sage); }
+
+  /* ---------- SUPPORT BOOK ---------- */
+  .supportbook {
+    background: var(--dusk);
+    color: var(--dusk-ink);
+  }
+  .supportbook .lp-inner { max-width: 38rem; text-align: center; }
+  .supportbook h2 {
+    font-size: clamp(1.35rem, 3.2vw, 1.75rem);
+    margin-bottom: var(--space-3);
+  }
+  .supportbook p { color: var(--dusk-ink-soft); }
+  .supportbook p + p { margin-top: 1.1em; }
+  .supportbook .lead-emphasis { color: var(--amber); }
+  .sb-checks {
+    margin-top: var(--space-4);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem 1rem;
+    list-style: none;
+    padding: 0;
+  }
+  .sb-checks li {
+    font-size: 0.88rem;
+    color: var(--dusk-ink);
+    background: rgba(243, 239, 230, 0.08);
+    border: 1px solid rgba(243, 239, 230, 0.18);
+    border-radius: 999px;
+    padding: 0.45em 1em;
+  }
+
+  /* ---------- OVERVIEW ---------- */
+  .overview { background: var(--paper-raised); }
+  .overview-grid {
+    max-width: 38rem;
+    margin: var(--space-5) auto 0;
+    display: grid;
+    grid-template-columns: 8rem 1fr;
+    row-gap: var(--space-3);
+    column-gap: var(--space-3);
+  }
+  @media (max-width: 560px) {
+    .overview-grid { grid-template-columns: 1fr; row-gap: 0.3rem; }
+    .overview-grid dt { padding-top: var(--space-2); }
+  }
+  .overview-grid dt {
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--hairline);
+    padding-top: var(--space-2);
+  }
+  .overview-grid dd {
+    margin: 0;
+    border-top: 1px solid var(--hairline);
+    padding-top: var(--space-2);
+    font-variant-numeric: tabular-nums;
+  }
+  .overview-note {
+    max-width: 38rem;
+    margin: var(--space-3) auto 0;
+    padding: var(--space-2) var(--space-3);
+    background: rgba(227, 168, 87, 0.14);
+    border: 1px solid rgba(227, 168, 87, 0.35);
+    border-radius: var(--radius);
+    font-size: 0.92rem;
+    color: var(--ink);
+  }
+
+  /* ---------- APPLY ---------- */
+  .apply { background: var(--paper); text-align: center; }
+  .apply .lp-inner { max-width: 34rem; }
+  .apply h2 { font-size: clamp(1.35rem, 3.2vw, 1.75rem); }
+  .apply p { margin-top: var(--space-2); color: var(--ink-soft); }
+  .apply-email {
+    display: inline-block;
+    margin-top: var(--space-4);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--amber-deep);
+    text-decoration: none;
+    border-bottom: 1px solid var(--amber-deep);
+    padding-bottom: 0.15em;
+  }
+  .apply-meta {
+    margin-top: var(--space-2);
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- FOOTER ---------- */
+  .lp-footer {
+    background: var(--dusk-deep);
+    color: var(--dusk-ink-soft);
+    text-align: center;
+    padding: var(--space-5) var(--space-3) var(--space-4);
+  }
+  .lp-footer .footer-message {
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 2.6vw, 1.3rem);
+    color: var(--dusk-ink);
+    max-width: 30rem;
+    margin: 0 auto;
+  }
+  .lp-footer .footer-body {
+    margin-top: var(--space-2);
+    max-width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0.92rem;
+  }
+  .lp-footer .footer-org {
+    margin-top: var(--space-4);
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    border-top: 1px solid rgba(243, 239, 230, 0.14);
+    padding-top: var(--space-3);
+  }
+  .lp-footer .footer-org a { text-decoration: underline; }
+
+  /* ---------- REVEAL ---------- */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+
+<div class="lp-root">
+
+  <header class="hero">
+    <div class="hero-blobs" aria-hidden="true">
+      <div class="hero-blob hero-blob--amber"></div>
+      <div class="hero-blob hero-blob--rose"></div>
+      <div class="hero-blob hero-blob--sage"></div>
+    </div>
+    <div class="hero-content">
+      <span class="eyebrow">発達っ子ママキャリアデザイン室 主催 ／ 対話イベント</span>
+      <h1>発達障害の子どもと<br>家族のための対話イベント</h1>
+      <p class="hero-tagline">知ることから、はじめよう。</p>
+      <p class="hero-lead">発達障害当事者の声から、子どもの気持ちと関わり方を考える時間。</p>
+      <div class="quick-facts">
+        <span class="quick-fact">9月27日（日）13:00〜14:30</span>
+        <span class="quick-fact">ふるさと新座館 会議室</span>
+        <span class="quick-fact">定員30名程度</span>
+      </div>
+      <a class="cta-button" href="#apply">参加を申し込む</a>
+    </div>
+  </header>
+
+  <section class="event-visual reveal">
+    <img src="assets/images/event-illustration-web.jpg" alt="対話をする3つの吹き出しと、ハートのついた家のイラスト">
+    <p>それぞれの声を、そっと重ねる時間に。</p>
+  </section>
+
+  <section class="lp-section lead-message reveal">
+    <div class="lp-inner">
+      <p class="lead-kicker">子どもの気持ち、ちゃんと知りたい。</p>
+      <p>まずは当事者の声に耳を傾け、子どもの気持ちを想像することから始めてみませんか。</p>
+      <p>「もっと頑張らなきゃ」と、自分を追い詰めていませんか。<br>
+      工夫や努力も大切にしながら、それだけではどうにもならない場面があると知ることで、<span class="lead-emphasis">少し肩の荷が下りる</span>。今回はそんな気づきも一緒に持ち帰っていただけたらと思っています。</p>
+      <p>みんなで一緒に、子どもが安心して過ごせる関わり方を考えていきましょう。</p>
+    </div>
+  </section>
+
+  <section class="lp-section perspectives reveal">
+    <div class="lp-inner--wide">
+      <div class="section-heading">
+        <h2>それぞれに、見えている世界がある。</h2>
+      </div>
+      <p class="section-sub">子どもの気持ちも、親の想いも、先生や支援者の立場も。それぞれに見えているものは、少しずつ違います。</p>
+      <div class="persp-grid">
+        <div class="persp-card persp-card--child">
+          <div class="persp-mark" aria-hidden="true"></div>
+          <h3>子どもの立場</h3>
+          <p>「どうして伝わらないんだろう」——そう感じている、子どもだけに見えている世界があります。</p>
+        </div>
+        <div class="persp-card persp-card--parent">
+          <div class="persp-mark" aria-hidden="true"></div>
+          <h3>親の立場</h3>
+          <p>毎日いちばん近くで見ているからこそ、気づけることと、気づけないことがあります。</p>
+        </div>
+        <div class="persp-card persp-card--support">
+          <div class="persp-mark" aria-hidden="true"></div>
+          <h3>先生・支援者の立場</h3>
+          <p>集団の中で見える姿は、家庭で見せる姿とはまた違う一面かもしれません。</p>
+        </div>
+      </div>
+      <p class="persp-note">完全に分かり合うことは、難しいかもしれません。けれど「自分には見えていない部分があるかもしれない」と気づくことから、伝え合う方法を一緒に考えることができます。</p>
+    </div>
+  </section>
+
+  <section class="lp-section flow reveal">
+    <div class="lp-inner">
+      <div class="section-heading">
+        <h2>当日の流れ</h2>
+      </div>
+      <div class="flow-list">
+        <div class="flow-item flow-item--1">
+          <p class="flow-time">13:00〜</p>
+          <h3>第1部　当事者が語る「私に見えていた世界」</h3>
+          <p>発達障害当事者の方に、子どもの頃の体験や感じていたことをお話しいただきます。"見えていた世界"だけでなく、"頑張りすぎなくていい"と思えた瞬間も。</p>
+        </div>
+        <div class="flow-item flow-item--dialogue">
+          <p class="flow-time">対話・質疑</p>
+          <h3>感じたことを、参加者同士で</h3>
+          <p>お話を聞いて感じたことを共有しながら、子どもの気持ちやそれぞれの立場について考える時間です。</p>
+        </div>
+        <div class="flow-item flow-item--2">
+          <p class="flow-time">〜14:30</p>
+          <h3>第2部　サポートブック活用ミニワークショップ</h3>
+          <p>子どもの特性や関わり方を、家庭・学校・支援者で共有するためのツール「サポートブック」をご紹介し、簡単なワークを行います。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lp-section supportbook reveal">
+    <div class="lp-inner">
+      <h2>サポートブックは、<br>「お願い帳」ではありません。</h2>
+      <p>親から学校へのお願いごとをまとめるものではなく、<span class="lead-emphasis">見えない部分をお互いに共有するためのコミュニケーションツール</span>として、サポートブックをご紹介します。</p>
+      <p>興味を持った方には、後日「サポートブック作成講座」もご案内します。</p>
+      <ul class="sb-checks">
+        <li>オンライン・対面で受講可能</li>
+        <li>お子さんに合わせたオリジナルを作成</li>
+        <li>学校・園・支援機関との連携に</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="lp-section overview reveal">
+    <div class="lp-inner">
+      <div class="section-heading">
+        <h2>開催概要</h2>
+      </div>
+      <dl class="overview-grid">
+        <dt>日時</dt>
+        <dd>2026年9月27日（日）13:00〜14:30（受付12:30〜）</dd>
+        <dt>会場</dt>
+        <dd>ふるさと新座館 会議室</dd>
+        <dt>対象</dt>
+        <dd>発達障がい、もしくは疑いのあるお子さんの保護者の方／関心のある方／学校・園関係者／療育等施設関係者</dd>
+        <dt>定員</dt>
+        <dd>30名程度（先着順）</dd>
+        <dt>参加費</dt>
+        <dd>1,000円（お茶・お菓子代を含む）／ 当日、現金またはPayPayでお支払い</dd>
+      </dl>
+      <p class="overview-note">お子様連れ歓迎です。ただし保育等はありませんので、お子様とご一緒にご参加ください。</p>
+    </div>
+  </section>
+
+  <section class="lp-section apply reveal" id="apply">
+    <div class="lp-inner">
+      <h2>参加のお申し込み</h2>
+      <p>下記のGoogleフォームよりお申し込みください。</p>
+      <a class="cta-button" href="https://docs.google.com/forms/d/e/1FAIpQLSdGcwPzO8u_0BDyYRowRHHgccgeVmVdeIcWNsrj6K5eCXADEg/viewform" target="_blank" rel="noopener">Googleフォームで申し込む</a>
+      <p class="apply-meta">参加費のお支払いは、当日会場にて現金またはPayPayでお願いいたします。定員に達し次第、締め切らせていただきます。</p>
+    </div>
+  </section>
+
+  <footer class="lp-footer">
+    <p class="footer-message">一人で抱え込まなくて、大丈夫。</p>
+    <p class="footer-body">子どもに関わる人が増えることが、子どもにとっての「応援団」が増えることです。みなさんのご参加をお待ちしております。</p>
+    <p class="footer-org">主催：発達っ子ママキャリアデザイン室　／　お問い合わせ：<a href="https://www.instagram.com/akiko_mentor_autism/" target="_blank" rel="noopener">Instagram DM（@akiko_mentor_autism）</a></p>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var els = document.querySelectorAll('.lp-root .reveal');
+    if (!('IntersectionObserver' in window) || !els.length) return;
+    els.forEach(function (el) { el.classList.remove('reveal'); el.classList.add('reveal', 'reveal-pending'); });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+</body>
+</html>
