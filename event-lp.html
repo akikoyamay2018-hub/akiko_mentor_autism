@@ -7,17 +7,14 @@
 <meta name="description" content="9/27(日)開催。発達障害当事者の声から、子どもの気持ちと関わり方を考える対話イベントの参加申込ページです。">
 </head>
 <body>
-<style>
+﻿<style>
   :root {
     --ink: #2B2A3D;
     --ink-soft: #5C5A72;
-    --paper: #F3EFE6;
-    --paper-raised: #FBF8F1;
+    --paper: #F5E9DA;
+    --paper-raised: #FAF1E1;
+    --paper-deep: #EFE0C7;
     --hairline: rgba(43, 42, 61, 0.16);
-    --dusk: #201D38;
-    --dusk-deep: #14122A;
-    --dusk-ink: #F3EFE6;
-    --dusk-ink-soft: #C7C2D6;
     --amber: #E3A857;
     --amber-deep: #B97F2E;
     --rose: #C97B84;
@@ -41,25 +38,28 @@
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --ink: #ECE7DA;
-      --ink-soft: #B6B0C4;
-      --paper: #17151F;
-      --paper-raised: #201D2C;
-      --hairline: rgba(236, 231, 218, 0.16);
+      --ink: #EDE3D2;
+      --ink-soft: #C4B8A2;
+      --paper: #241F17;
+      --paper-raised: #2C2620;
+      --paper-deep: #1B1712;
+      --hairline: rgba(237, 227, 210, 0.16);
     }
   }
   :root[data-theme="dark"] {
-    --ink: #ECE7DA;
-    --ink-soft: #B6B0C4;
-    --paper: #17151F;
-    --paper-raised: #201D2C;
-    --hairline: rgba(236, 231, 218, 0.16);
+    --ink: #EDE3D2;
+    --ink-soft: #C4B8A2;
+    --paper: #241F17;
+    --paper-raised: #2C2620;
+    --paper-deep: #1B1712;
+    --hairline: rgba(237, 227, 210, 0.16);
   }
   :root[data-theme="light"] {
     --ink: #2B2A3D;
     --ink-soft: #5C5A72;
-    --paper: #F3EFE6;
-    --paper-raised: #FBF8F1;
+    --paper: #F5E9DA;
+    --paper-raised: #FAF1E1;
+    --paper-deep: #EFE0C7;
     --hairline: rgba(43, 42, 61, 0.16);
   }
 
@@ -97,8 +97,8 @@
   /* ---------- HERO ---------- */
   .hero {
     position: relative;
-    background: radial-gradient(120% 140% at 50% -10%, var(--dusk) 0%, var(--dusk-deep) 70%);
-    color: var(--dusk-ink);
+    background: var(--paper);
+    color: var(--ink);
     padding: var(--space-6) var(--space-3) var(--space-5);
     overflow: hidden;
     isolation: isolate;
@@ -108,12 +108,12 @@
     inset: 0;
     z-index: 0;
     filter: blur(48px);
-    opacity: 0.55;
+    opacity: 0.4;
   }
   .hero-blob {
     position: absolute;
     border-radius: 50%;
-    mix-blend-mode: screen;
+    mix-blend-mode: multiply;
   }
   .hero-blob--amber {
     width: 34rem; height: 34rem;
@@ -160,8 +160,8 @@
     display: inline-block;
     font-size: 0.8rem;
     letter-spacing: 0.16em;
-    color: var(--dusk-ink-soft);
-    border: 1px solid rgba(243, 239, 230, 0.28);
+    color: var(--ink-soft);
+    border: 1px solid var(--hairline);
     border-radius: 999px;
     padding: 0.4em 1em;
     margin-bottom: var(--space-3);
@@ -183,7 +183,7 @@
   }
   .hero-lead {
     margin-top: var(--space-3);
-    color: var(--dusk-ink-soft);
+    color: var(--ink-soft);
     font-size: 1.02rem;
   }
   .quick-facts {
@@ -196,9 +196,9 @@
   .quick-fact {
     font-size: 0.85rem;
     font-variant-numeric: tabular-nums;
-    background: rgba(243, 239, 230, 0.08);
-    border: 1px solid rgba(243, 239, 230, 0.2);
-    color: var(--dusk-ink);
+    background: var(--paper-raised);
+    border: 1px solid var(--hairline);
+    color: var(--ink);
     padding: 0.5em 1em;
     border-radius: 999px;
   }
@@ -206,7 +206,7 @@
     display: inline-block;
     margin-top: var(--space-4);
     background: var(--amber);
-    color: var(--dusk-deep);
+    color: var(--ink);
     font-weight: 700;
     text-decoration: none;
     padding: 0.9em 2.4em;
@@ -223,9 +223,9 @@
 
   /* ---------- EVENT VISUAL ---------- */
   .event-visual {
-    background: #F5E9DA;
+    background: var(--paper);
     text-align: center;
-    padding: var(--space-5) var(--space-3) var(--space-4);
+    padding: var(--space-2) var(--space-3) var(--space-4);
   }
   .event-visual img {
     display: inline-block;
@@ -355,17 +355,17 @@
 
   /* ---------- SUPPORT BOOK ---------- */
   .supportbook {
-    background: var(--dusk);
-    color: var(--dusk-ink);
+    background: var(--paper-deep);
+    color: var(--ink);
   }
   .supportbook .lp-inner { max-width: 38rem; text-align: center; }
   .supportbook h2 {
     font-size: clamp(1.35rem, 3.2vw, 1.75rem);
     margin-bottom: var(--space-3);
   }
-  .supportbook p { color: var(--dusk-ink-soft); }
+  .supportbook p { color: var(--ink-soft); }
   .supportbook p + p { margin-top: 1.1em; }
-  .supportbook .lead-emphasis { color: var(--amber); }
+  .supportbook .lead-emphasis { color: var(--amber-deep); }
   .sb-checks {
     margin-top: var(--space-4);
     display: flex;
@@ -377,9 +377,9 @@
   }
   .sb-checks li {
     font-size: 0.88rem;
-    color: var(--dusk-ink);
-    background: rgba(243, 239, 230, 0.08);
-    border: 1px solid rgba(243, 239, 230, 0.18);
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--hairline);
     border-radius: 999px;
     padding: 0.45em 1em;
   }
@@ -445,15 +445,16 @@
 
   /* ---------- FOOTER ---------- */
   .lp-footer {
-    background: var(--dusk-deep);
-    color: var(--dusk-ink-soft);
+    background: var(--paper);
+    color: var(--ink-soft);
     text-align: center;
     padding: var(--space-5) var(--space-3) var(--space-4);
+    border-top: 1px solid var(--hairline);
   }
   .lp-footer .footer-message {
     font-family: var(--font-display);
     font-size: clamp(1.05rem, 2.6vw, 1.3rem);
-    color: var(--dusk-ink);
+    color: var(--ink);
     max-width: 30rem;
     margin: 0 auto;
   }
@@ -468,7 +469,7 @@
     margin-top: var(--space-4);
     font-size: 0.82rem;
     letter-spacing: 0.04em;
-    border-top: 1px solid rgba(243, 239, 230, 0.14);
+    border-top: 1px solid var(--hairline);
     padding-top: var(--space-3);
   }
   .lp-footer .footer-org a { text-decoration: underline; }
