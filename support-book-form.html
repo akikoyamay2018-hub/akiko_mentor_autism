@@ -276,6 +276,7 @@
   }
   input[type="number"] { font-variant-numeric: tabular-nums; }
   textarea { resize: vertical; min-height: 58px; }
+  .print-mirror { display: none; }
   .row-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -327,6 +328,12 @@
     color: var(--muted);
     text-align: center;
   }
+  .footer-copyright {
+    margin-top: 10px;
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+  }
 
   .modal-backdrop {
     position: fixed; inset: 0; background: rgba(20, 28, 26, 0.55);
@@ -364,11 +371,66 @@
       print-color-adjust: exact !important;
       color-adjust: exact !important;
     }
-    .topbar, .add-btn, .row-remove, .modal-backdrop, .no-print { display: none !important; }
-    body { background: #fff; color: var(--ink); }
-    .card { box-shadow: none; border: 1px solid var(--line); break-inside: avoid; }
-    main { max-width: 100%; padding: 0 8px; }
+    .topbar, .add-btn, .row-remove, .modal-backdrop, .no-print,
+    .intro p, .badge-new, .age-hint, .footer-note { display: none !important; }
+
+    body { background: #fff; color: var(--ink); font-size: 10.5px; line-height: 1.42; }
+    main { max-width: 100%; padding: 0 6mm; }
     a { color: inherit; text-decoration: none; }
+
+    .intro { padding: 0 0 4px; }
+    .intro h1 { font-size: 17px; }
+    .hero-illustration { margin: 4px 0 10px; max-height: 60px; width: auto; display: block; margin-left: auto; margin-right: auto; }
+
+    .card {
+      box-shadow: none;
+      border: 1px solid var(--line);
+      break-inside: avoid;
+      padding: 8px 10px 9px;
+      margin-bottom: 7px;
+      border-radius: 8px;
+    }
+    .card-head { gap: 7px; margin-bottom: 7px; }
+    .icon-badge { width: 24px; height: 24px; }
+    .icon-badge svg { width: 13px; height: 13px; }
+    .icon-chip { width: 12px; height: 12px; font-size: 7px; right: -3px; bottom: -3px; }
+    .card-head h2 { font-size: 12px; }
+    .card-head .card-sub { font-size: 8px; margin-top: 1px; }
+
+    .subsection { padding-top: 6px; margin-top: 6px; }
+    .subsection-title { font-size: 10px; margin-bottom: 4px; }
+
+    label { font-size: 8.5px; margin-bottom: 2px; }
+    .field { margin-bottom: 4px; }
+    input[type="text"], input[type="date"], input[type="tel"], input[type="number"], textarea, select {
+      font-size: 9.5px;
+      padding: 3px 5px;
+      border-radius: 5px;
+    }
+    textarea { display: none !important; }
+    .print-mirror {
+      display: block;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 9.5px;
+      line-height: 1.4;
+      padding: 3px 5px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: var(--card-alt);
+      min-height: 9px;
+      color: var(--ink);
+    }
+    .print-mirror:empty::after { content: "—"; color: var(--muted); }
+    .row-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 4px 8px; }
+    .age-pair { gap: 3px; }
+    .age-pair span { font-size: 9px; }
+
+    .repeat-list { gap: 5px; margin-bottom: 4px; }
+    .repeat-row { padding: 6px 8px 4px; border-radius: 7px; break-inside: avoid; }
+
+    footer { padding: 8px 10px 10px; }
+    .footer-copyright { margin-top: 2px; font-size: 9px; }
   }
 </style>
 
@@ -725,8 +787,11 @@
 </main>
 
 <footer>
-  入力内容はお使いのブラウザ内にのみ保存されます（外部サーバーへの送信はありません）。<br>
-  様式構成は「発達っ子ママキャリアメンター」のサポートブックを参考に作成。
+  <div class="footer-note">
+    入力内容はお使いのブラウザ内にのみ保存されます（外部サーバーへの送信はありません）。<br>
+    様式構成は「発達っ子ママキャリアメンター」のサポートブックを参考に作成。
+  </div>
+  <div class="footer-copyright">© 発達っ子ママキャリアデザイン室</div>
 </footer>
 
 <div class="modal-backdrop" id="exportModal">
@@ -1073,8 +1138,22 @@
     });
   }
 
+  function ensurePrintMirror(textarea) {
+    var mirror = textarea.nextElementSibling;
+    if (!mirror || !mirror.classList.contains("print-mirror")) {
+      mirror = document.createElement("div");
+      mirror.className = "print-mirror";
+      textarea.insertAdjacentElement("afterend", mirror);
+    }
+    mirror.textContent = textarea.value || "";
+  }
+  function syncPrintMirrors() {
+    $all("textarea").forEach(ensurePrintMirror);
+  }
+
   var saveTimer = null;
   function scheduleSave() {
+    syncPrintMirrors();
     var status = $("#saveStatus");
     status.textContent = "編集中…";
     status.classList.remove("saved");
@@ -1291,6 +1370,7 @@
     initAgeCalc();
     initTopbarName();
     initExportImport();
+    syncPrintMirrors();
 
     if (new URLSearchParams(window.location.search).get("autoprint") === "1") {
       setTimeout(function () { window.print(); }, 500);
