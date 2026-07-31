@@ -195,24 +195,13 @@
     outline-offset: 3px;
   }
 
-  /* ---------- EVENT VISUAL ---------- */
-  .event-visual {
-    background: var(--paper);
-    text-align: center;
-    padding: var(--space-2) var(--space-3) var(--space-4);
-  }
-  .event-visual img {
-    display: inline-block;
-    width: 26rem;
-    max-width: 100%;
+  /* ---------- HERO VISUAL ---------- */
+  .hero-visual {
+    display: block;
+    width: 11rem;
+    max-width: 55%;
     height: auto;
-    border-radius: var(--radius);
-  }
-  .event-visual p {
-    margin-top: var(--space-3);
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    color: #8A5A34;
+    margin: 0 auto var(--space-2);
   }
 
   /* ---------- LEAD MESSAGE ---------- */
@@ -326,6 +315,72 @@
   .flow-item--1 { --flow-color: var(--amber); }
   .flow-item--dialogue { --flow-color: var(--rose); }
   .flow-item--2 { --flow-color: var(--sage); }
+  .flow-speaker {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 0.8rem;
+  }
+  .flow-speaker img {
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: 0 0 auto;
+  }
+  .flow-speaker-meta {
+    font-size: 0.85rem;
+    line-height: 1.35;
+    color: var(--ink-soft);
+  }
+  .flow-speaker-meta strong {
+    display: block;
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+
+  /* ---------- SPEAKERS ---------- */
+  .speakers { background: var(--paper-raised); }
+  .speaker-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+    max-width: 42rem;
+    margin: var(--space-5) auto 0;
+  }
+  @media (max-width: 640px) {
+    .speaker-grid { grid-template-columns: 1fr; }
+  }
+  .speaker-profile {
+    text-align: center;
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    padding: var(--space-4) var(--space-3);
+  }
+  .speaker-profile img {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto var(--space-2);
+  }
+  .speaker-profile h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3em;
+  }
+  .speaker-profile .speaker-role {
+    font-size: 0.85rem;
+    color: var(--amber-deep);
+    font-weight: 600;
+    margin-bottom: 0.8em;
+  }
+  .speaker-profile .speaker-bio {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    text-align: left;
+  }
 
   /* ---------- SUPPORT BOOK ---------- */
   .supportbook {
@@ -455,22 +510,19 @@
     </div>
     <div class="hero-content">
       <span class="eyebrow">発達っ子ママキャリアデザイン室 主催 ／ 子育て応援カフェ</span>
+      <img class="hero-visual" src="assets/images/cafe-illustration-web.png" alt="湯気の立つティーカップと焼き菓子のイラスト">
       <h1>発達特性の子育て応援カフェ</h1>
       <p class="hero-tagline">〜子どもを真ん中に。家族も、先生も、支援者も、みんながみんなの応援団〜</p>
       <p class="hero-lead">発達障害当事者の声から、子どもの気持ちと関わり方を考える時間。</p>
       <div class="quick-facts">
-        <span class="quick-fact">9月27日（日）13:00〜14:30</span>
-        <span class="quick-fact">ふるさと新座館 会議室</span>
+        <span class="quick-fact">9月27日（日）13:30〜15:00</span>
+        <span class="quick-fact">新座市市民会館 会議室</span>
         <span class="quick-fact">定員30名程度</span>
+        <span class="quick-fact">お茶菓子付き</span>
       </div>
       <a class="cta-button" href="#apply">参加を申し込む</a>
     </div>
   </header>
-
-  <section class="event-visual reveal">
-    <img src="assets/images/event-illustration-web.jpg" alt="対話をする3つの吹き出しと、ハートのついた家のイラスト">
-    <p>それぞれの声を、そっと重ねる時間に。</p>
-  </section>
 
   <section class="lp-section lead-message reveal">
     <div class="lp-inner">
@@ -516,19 +568,49 @@
       </div>
       <div class="flow-list">
         <div class="flow-item flow-item--1">
-          <p class="flow-time">13:00〜</p>
+          <p class="flow-time">13:30〜</p>
           <h3>第1部　当事者が語る「私に見えていた世界」</h3>
           <p>発達障害当事者の方に、子どもの頃の体験や感じていたことをお話しいただきます。"見えていた世界"だけでなく、"頑張りすぎなくていい"と思えた瞬間も。</p>
+          <div class="flow-speaker">
+            <img src="assets/images/speaker-chico-web.jpg" alt="ちこ">
+            <p class="flow-speaker-meta"><strong>ちこ</strong>発達障がい当事者</p>
+          </div>
         </div>
         <div class="flow-item flow-item--dialogue">
-          <p class="flow-time">対話・質疑</p>
-          <h3>感じたことを、参加者同士で</h3>
+          <p class="flow-time">14:00〜</p>
+          <h3>対話・質疑</h3>
           <p>お話を聞いて感じたことを共有しながら、子どもの気持ちやそれぞれの立場について考える時間です。</p>
         </div>
         <div class="flow-item flow-item--2">
-          <p class="flow-time">〜14:30</p>
+          <p class="flow-time">14:30〜</p>
           <h3>第2部　サポートブック活用ミニワークショップ</h3>
           <p>子どもの特性や関わり方を、家庭・学校・支援者で共有するためのツール「サポートブック」をご紹介し、簡単なワークを行います。</p>
+          <div class="flow-speaker">
+            <img src="assets/images/speaker-akiko-web.jpg" alt="小山陽子（あきこ）">
+            <p class="flow-speaker-meta"><strong>小山陽子（あきこ）</strong>発達っ子ママキャリアメンター</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lp-section speakers reveal">
+    <div class="lp-inner--wide">
+      <div class="section-heading">
+        <h2>登壇者プロフィール</h2>
+      </div>
+      <div class="speaker-grid">
+        <div class="speaker-profile">
+          <img src="assets/images/speaker-chico-web.jpg" alt="ちこ">
+          <h3>ちこ</h3>
+          <p class="speaker-role">発達障がい当事者</p>
+          <p class="speaker-bio">発達障害当事者として、これまでの経験や日々感じていることを発信しています。今回は、子どもの頃に感じていた気持ちや、大人になった今だからこそ伝えられることをお話しします。</p>
+        </div>
+        <div class="speaker-profile">
+          <img src="assets/images/speaker-akiko-web.jpg" alt="小山陽子（あきこ）">
+          <h3>小山陽子（あきこ）</h3>
+          <p class="speaker-role">発達っ子ママキャリアメンター</p>
+          <p class="speaker-bio">発達っ子ママキャリアメンターとして、発達特性のある子どもを育てる保護者のキャリアと子育ての両立を応援しています。サポートブックを通じて、家庭・学校・支援者をつなぐ活動にも力を入れています。</p>
         </div>
       </div>
     </div>
@@ -554,9 +636,9 @@
       </div>
       <dl class="overview-grid">
         <dt>日時</dt>
-        <dd>2026年9月27日（日）13:00〜14:30（受付12:30〜）</dd>
+        <dd>2026年9月27日（日）13:30〜15:00（受付13:00〜）</dd>
         <dt>会場</dt>
-        <dd>ふるさと新座館 会議室</dd>
+        <dd>新座市市民会館 会議室</dd>
         <dt>対象</dt>
         <dd>発達障がい、もしくは疑いのあるお子さんの保護者の方／関心のある方／学校・園関係者／療育等施設関係者</dd>
         <dt>定員</dt>
