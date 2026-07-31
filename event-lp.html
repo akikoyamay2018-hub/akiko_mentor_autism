@@ -144,17 +144,6 @@
     line-height: 1.5;
     letter-spacing: 0.02em;
   }
-  .hero-tagline {
-    margin-top: var(--space-3);
-    font-family: var(--font-display);
-    font-size: clamp(1.15rem, 3.4vw, 1.55rem);
-    font-weight: 600;
-    text-wrap: balance;
-    background: linear-gradient(95deg, var(--amber) 0%, var(--rose) 55%, var(--sage) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
   .hero-lead {
     margin-top: var(--space-3);
     color: var(--ink-soft);
@@ -198,10 +187,11 @@
   /* ---------- HERO VISUAL ---------- */
   .hero-visual {
     display: block;
-    width: 11rem;
-    max-width: 55%;
+    width: 28rem;
+    max-width: 100%;
     height: auto;
-    margin: 0 auto var(--space-2);
+    margin: 0 auto;
+    border-radius: var(--radius);
   }
 
   /* ---------- LEAD MESSAGE ---------- */
@@ -510,9 +500,7 @@
     </div>
     <div class="hero-content">
       <span class="eyebrow">発達っ子ママキャリアデザイン室 主催 ／ 子育て応援カフェ</span>
-      <img class="hero-visual" src="assets/images/cafe-illustration-web.png" alt="湯気の立つティーカップと焼き菓子のイラスト">
-      <h1>発達特性の子育て応援カフェ</h1>
-      <p class="hero-tagline">〜子どもを真ん中に。家族も、先生も、支援者も、みんながみんなの応援団〜</p>
+      <h1><img class="hero-visual" src="assets/images/title-banner-web.jpg" alt="発達特性の子育て応援カフェ　〜子どもを真ん中に。家族も、先生も、支援者も、みんながみんなの応援団〜"></h1>
       <p class="hero-lead">発達障害当事者の声から、子どもの気持ちと関わり方を考える時間。</p>
       <div class="quick-facts">
         <span class="quick-fact">9月27日（日）13:30〜15:00</span>
