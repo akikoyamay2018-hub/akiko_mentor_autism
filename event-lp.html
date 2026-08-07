@@ -433,6 +433,19 @@
   /* ---------- ACCESS ---------- */
   .access { background: var(--paper); }
   .access .section-heading { text-align: center; margin-bottom: var(--space-4); }
+  .access-map {
+    max-width: 38rem;
+    margin: 0 auto var(--space-4);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .access-map iframe {
+    display: block;
+    width: 100%;
+    height: 18rem;
+    border: 0;
+  }
   .access-block {
     max-width: 38rem;
     margin: 0 auto var(--space-4);
@@ -465,6 +478,18 @@
     height: 0.4em;
     border-radius: 50%;
     background: var(--sage);
+  }
+  .access-link {
+    text-align: center;
+    margin-top: var(--space-2);
+  }
+  .access-link a {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--amber-deep);
+    text-decoration: none;
+    border-bottom: 1px solid var(--amber-deep);
+    padding-bottom: 0.1em;
   }
 
   /* ---------- APPLY ---------- */
@@ -681,13 +706,13 @@
       <div class="section-heading">
         <h2>新座市民会館へのアクセス</h2>
       </div>
+      <div class="access-map">
+        <iframe src="https://www.google.com/maps?q=新座市民会館+埼玉県新座市野火止1丁目1-2&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="新座市民会館の地図"></iframe>
+      </div>
       <div class="access-block">
         <h3>公共交通機関でお越しの場合</h3>
         <ul>
-          <li>JR武蔵野線「新座駅」南口から西武バス「東久留米駅」行き（約8分）「新座市役所前」下車、徒歩4分</li>
-          <li>東武東上線「志木駅」南口から西武バス「ひばりが丘駅北口」行き（約14分）「新座市役所前」下車、徒歩4分</li>
-          <li>東武東上線「朝霞台駅」南口から西武バス「東久留米駅」行き（約17分）「新座市役所前」下車、徒歩4分</li>
-          <li>西武池袋線「東久留米駅」東口から西武バス「朝霞台駅」または「新座駅南口」行き（約18分）「新座市役所前」下車、徒歩4分</li>
+          <li>JR武蔵野線「新座駅」、東武東上線「志木駅」「朝霞台駅」、西武池袋線「東久留米駅」から西武バスで「新座市役所前」下車（徒歩4分）</li>
         </ul>
       </div>
       <div class="access-block">
@@ -698,6 +723,7 @@
           <li>駐車台数に限りがございますので、できるだけ公共交通機関のご利用にご協力ください。</li>
         </ul>
       </div>
+      <p class="access-link"><a href="https://www.niiza-kaikan.jp/access/" target="_blank" rel="noopener">新座市民会館 公式サイトのアクセスページ →</a></p>
     </div>
   </section>
 
