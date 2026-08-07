@@ -430,6 +430,43 @@
     padding-top: var(--space-2);
     font-variant-numeric: tabular-nums;
   }
+  /* ---------- ACCESS ---------- */
+  .access { background: var(--paper); }
+  .access .section-heading { text-align: center; margin-bottom: var(--space-4); }
+  .access-block {
+    max-width: 38rem;
+    margin: 0 auto var(--space-4);
+  }
+  .access-block:last-child { margin-bottom: 0; }
+  .access-block h3 {
+    font-size: 1rem;
+    margin-bottom: var(--space-2);
+    color: var(--ink);
+  }
+  .access-block ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .access-block li {
+    position: relative;
+    padding-left: 1.3em;
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+  .access-block li + li { margin-top: 0.5em; }
+  .access-block li::before {
+    content: "";
+    position: absolute;
+    left: 0.15em;
+    top: 0.6em;
+    width: 0.4em;
+    height: 0.4em;
+    border-radius: 50%;
+    background: var(--sage);
+  }
+
   /* ---------- APPLY ---------- */
   .apply { background: var(--paper); text-align: center; }
   .apply .lp-inner { max-width: 34rem; }
@@ -504,7 +541,7 @@
       <p class="hero-lead">発達障害当事者の声から、子どもの気持ちと関わり方を考える時間。</p>
       <div class="quick-facts">
         <span class="quick-fact">9月27日（日）13:30〜15:00</span>
-        <span class="quick-fact">新座市市民会館 会議室</span>
+        <span class="quick-fact">新座市民会館 3階 和室</span>
         <span class="quick-fact">定員30名程度</span>
         <span class="quick-fact">お茶菓子付き</span>
       </div>
@@ -558,10 +595,10 @@
         <div class="flow-item flow-item--1">
           <p class="flow-time">13:30〜</p>
           <h3>第1部　当事者が語る「私に見えていた世界」</h3>
-          <p>発達障害当事者の方に、子どもの頃の体験や感じていたことをお話しいただきます。"見えていた世界"だけでなく、"頑張りすぎなくていい"と思えた瞬間も。</p>
+          <p>当事者自身の体験から、子どもの頃に見えていた世界をお話しします。一般的な対処法だけでは見えにくい、行動の裏にあるリアルな感覚や本質に耳を傾ける時間に。</p>
           <div class="flow-speaker">
             <img src="assets/images/speaker-chico-web.jpg" alt="ちこ">
-            <p class="flow-speaker-meta"><strong>ちこ</strong>発達障がい当事者</p>
+            <p class="flow-speaker-meta"><strong>ちこ</strong>発達障害当事者</p>
           </div>
         </div>
         <div class="flow-item flow-item--dialogue">
@@ -572,7 +609,7 @@
         <div class="flow-item flow-item--2">
           <p class="flow-time">14:30〜</p>
           <h3>第2部　サポートブック活用ミニワークショップ</h3>
-          <p>子どもの特性や関わり方を、家庭・学校・支援者で共有するためのツール「サポートブック」をご紹介し、簡単なワークを行います。</p>
+          <p>子どもの特性や関わり方を、家庭・学校・支援者で共有するためのツール「サポートブック」をご紹介し、実際に作るための第一歩のきっかけとしていただける時間に。</p>
           <div class="flow-speaker">
             <img src="assets/images/speaker-akiko-web.jpg" alt="小山陽子（あきこ）">
             <p class="flow-speaker-meta"><strong>小山陽子（あきこ）</strong>発達っ子ママキャリアメンター</p>
@@ -591,8 +628,8 @@
         <div class="speaker-profile">
           <img src="assets/images/speaker-chico-web.jpg" alt="ちこ">
           <h3>ちこ</h3>
-          <p class="speaker-role">発達障がい当事者</p>
-          <p class="speaker-bio">発達障害当事者として、これまでの経験や日々感じていることを発信しています。今回は、子どもの頃に感じていた気持ちや、大人になった今だからこそ伝えられることをお話しします。</p>
+          <p class="speaker-role">発達障害当事者 / 発達障害コミュニケーションアドバイザー</p>
+          <p class="speaker-bio">発達障害当事者の立場から、気軽に立ち寄れる地域交流会を主催。「これって私だけ？」を安心して語り合える場をつくっています。また、当事者目線での日々の気づきを伝える音声配信も展開。自身のリアルな視点と専門知識から、子どもが見ている世界を届けています。</p>
         </div>
         <div class="speaker-profile">
           <img src="assets/images/speaker-akiko-web.jpg" alt="小山陽子（あきこ）">
@@ -624,9 +661,9 @@
       </div>
       <dl class="overview-grid">
         <dt>日時</dt>
-        <dd>2026年9月27日（日）13:30〜15:00（受付13:00〜）</dd>
+        <dd>2026年9月27日（日）13:30〜15:00（受付13:10〜）</dd>
         <dt>会場</dt>
-        <dd>新座市市民会館 会議室</dd>
+        <dd>新座市民会館 3階 和室</dd>
         <dt>対象</dt>
         <dd>発達障がい、もしくは疑いのあるお子さんの保護者の方／関心のある方／学校・園関係者／療育等施設関係者</dd>
         <dt>定員</dt>
@@ -634,8 +671,33 @@
         <dt>参加費</dt>
         <dd>1,000円（お茶・お菓子代込み）／当日現金・PayPay払い</dd>
         <dt>その他</dt>
-        <dd>お子様連れ歓迎です。ただし保育等はありませんので、お子様とご一緒にご参加ください。</dd>
+        <dd>お子様連れ歓迎です。ただし保育等はありませんので、お子様とご一緒にご参加ください。お連れのお子様の参加費はかかりません。</dd>
       </dl>
+    </div>
+  </section>
+
+  <section class="lp-section access reveal">
+    <div class="lp-inner">
+      <div class="section-heading">
+        <h2>新座市民会館へのアクセス</h2>
+      </div>
+      <div class="access-block">
+        <h3>公共交通機関でお越しの場合</h3>
+        <ul>
+          <li>JR武蔵野線「新座駅」南口から西武バス「東久留米駅」行き（約8分）「新座市役所前」下車、徒歩4分</li>
+          <li>東武東上線「志木駅」南口から西武バス「ひばりが丘駅北口」行き（約14分）「新座市役所前」下車、徒歩4分</li>
+          <li>東武東上線「朝霞台駅」南口から西武バス「東久留米駅」行き（約17分）「新座市役所前」下車、徒歩4分</li>
+          <li>西武池袋線「東久留米駅」東口から西武バス「朝霞台駅」または「新座駅南口」行き（約18分）「新座市役所前」下車、徒歩4分</li>
+        </ul>
+      </div>
+      <div class="access-block">
+        <h3>車・自転車でお越しの場合</h3>
+        <ul>
+          <li>市民会館・図書館共用の駐車場がございます（第1駐車場32台／第2駐車場36台）。市民会館・図書館のご利用で3時間無料です。</li>
+          <li>自転車でお越しの場合は、敷地内の駐輪スペースをご利用いただけます。</li>
+          <li>駐車台数に限りがございますので、できるだけ公共交通機関のご利用にご協力ください。</li>
+        </ul>
+      </div>
     </div>
   </section>
 
