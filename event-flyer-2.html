@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【第2弾】発達特性の子育て応援カフェ｜フライヤー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #2B2A3D; --ink-soft: #5C5A72; --brown: #4A2E1A;
+    --paper: #FBF3E3;
+    --amber: #E3A857; --amber-deep: #B97F2E;
+    --rose: #C97B84; --rose-deep: #A15660;
+    --sage: #7C9A82; --sage-deep: #557160;
+    --terra: #C97B5A;
+    --font: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "BIZ UDPGothic", "Yu Gothic", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  @page { size: A4; margin: 0; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #d9d2c4; font-family: var(--font); font-weight: 500; color: var(--brown); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page {
+    width: 210mm; height: 297mm; margin: 0 auto; position: relative; overflow: hidden;
+    background: linear-gradient(#FDF6E6, #F6E8D0);
+    padding: 6mm 9mm 4mm;
+    display: flex; flex-direction: column; gap: 2.4mm;
+  }
+  @media print { body { background: none; } .page { margin: 0; } }
+
+  /* hero */
+  .hero { display: grid; grid-template-columns: 1fr 88mm; gap: 5mm; align-items: center; }
+  .sticker {
+    display: inline-block; background: var(--rose-deep); color: #fff; font-weight: 900; font-size: 5.6mm; line-height: 1;
+    padding: 1.7mm 5mm; border-radius: 99mm; transform: rotate(-4deg); box-shadow: 0 1.2mm 0 rgba(0, 0, 0, 0.15);
+  }
+  .org { margin: 1.6mm 0 0; font-size: 3.6mm; font-weight: 900; color: var(--sage-deep); letter-spacing: 0.02em; }
+  h1 { margin: 1mm 0 0; font-size: 11.6mm; white-space: nowrap; line-height: 1.18; font-weight: 900; color: var(--brown); letter-spacing: 0.01em; }
+  h1 em { font-style: normal; color: var(--terra); }
+  .tag { margin: 2mm 0 0; font-size: 4.2mm; line-height: 1.6; font-weight: 900; color: var(--brown); }
+  .tag b { color: var(--terra); }
+  .lead { margin: 1.8mm 0 0; font-size: 3.6mm; line-height: 1.6; font-weight: 700; color: var(--ink-soft); }
+  .hero-img { width: 88mm; height: 66mm; object-fit: cover; object-position: 88% 60%; border-radius: 7mm; box-shadow: 0 3mm 6mm -3mm rgba(74, 46, 26, 0.5); display: block; }
+
+  /* info cards */
+  .cards { display: grid; grid-template-columns: 0.9fr 1.35fr 0.75fr 0.8fr; gap: 3mm; margin-top: 2mm; }
+  .card { position: relative; background: #fff; border: 0.9mm solid var(--c); border-radius: 5mm; padding: 4.4mm 2mm 2.4mm; text-align: center; box-shadow: 0 1.4mm 0 -0.2mm var(--c); }
+  .card .lbl { position: absolute; top: -2.6mm; left: 50%; transform: translateX(-50%); background: var(--c); color: #fff; font-size: 2.6mm; font-weight: 900; letter-spacing: 0.12em; padding: 0.4mm 3mm; border-radius: 99mm; }
+  .card b { display: block; font-size: 9mm; line-height: 1.1; font-weight: 900; color: var(--brown); }
+  .card b small { font-size: 4.4mm; }
+  .card b i { font-style: normal; color: var(--c); }
+  .card b.t { font-size: 5.2mm; line-height: 1.3; padding-top: 1mm; }
+  .card span.s { display: block; margin-top: 1.2mm; font-size: 3.2mm; font-weight: 700; color: var(--ink-soft); line-height: 1.4; }
+  .c1 { --c: #E3A857; } .c2 { --c: #C97B84; } .c3 { --c: #7C9A82; } .c4 { --c: #A15660; }
+
+  /* photo strip */
+  .strip { display: grid; grid-template-columns: 38mm 38mm 38mm 1fr; gap: 3mm; align-items: center; }
+  .strip img { width: 100%; height: 19mm; object-fit: cover; border-radius: 4mm; box-shadow: 0 1.4mm 3mm -1.6mm rgba(74, 46, 26, 0.5); display: block; }
+  .strip-copy { font-size: 6.4mm; line-height: 1.3; font-weight: 900; color: var(--terra); padding-left: 2mm; }
+  .strip-copy small { display: block; margin-top: 1mm; font-size: 3.2mm; font-weight: 700; color: var(--ink-soft); line-height: 1.5; }
+
+  /* program */
+  h2 { margin: 0 0 1.2mm; text-align: center; font-size: 6.4mm; font-weight: 900; position: relative; }
+  h2 span { position: relative; z-index: 1; padding: 0 1mm; }
+  h2::after { content: ""; position: absolute; left: 50%; transform: translateX(-50%); bottom: 0.4mm; width: 50mm; height: 2.6mm; background: rgba(227, 168, 87, 0.55); border-radius: 99mm; }
+  .program { display: flex; flex-direction: column; gap: 2.2mm; }
+  .item { display: grid; grid-template-columns: 22mm 1fr auto; gap: 3mm; align-items: center; background: #fff; border-radius: 4.5mm; border-left: 2.2mm solid var(--c); padding: 1.6mm 3.5mm 1.6mm 3mm; }
+  .item .time { font-size: 5.2mm; font-weight: 900; color: var(--c); filter: brightness(0.85); }
+  .item b { font-size: 4.3mm; font-weight: 900; line-height: 1.35; }
+  .item p { margin: 0.6mm 0 0; font-size: 3.3mm; line-height: 1.5; color: var(--ink-soft); font-weight: 500; }
+  .who { display: flex; align-items: center; gap: 2mm; }
+  .who img, .who .ph { width: 11.5mm; height: 11.5mm; border-radius: 50%; object-fit: cover; flex: 0 0 auto; border: 0.8mm solid var(--c); }
+  .who .ph { display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--amber), var(--rose)); color: #fff; font-size: 3.1mm; font-weight: 900; border-color: #fff; }
+  .who .role { font-size: 2.7mm; line-height: 1.25; color: var(--ink-soft); font-weight: 700; }
+  .who .name { font-size: 4mm; font-weight: 900; line-height: 1.2; }
+  .p1 { --c: #E3A857; } .p2 { --c: #C97B84; } .p3 { --c: #7C9A82; }
+
+  /* bottom */
+  .bottom { display: grid; grid-template-columns: 1fr 41mm; gap: 4.5mm; align-items: stretch; margin-top: 0.4mm; }
+  dl { margin: 0; display: grid; grid-template-columns: 23mm 1fr; row-gap: 0.3mm; }
+  dt { font-size: 3.3mm; font-weight: 900; color: var(--terra); border-top: 0.5mm dotted rgba(201, 123, 90, 0.6); padding-top: 1mm; }
+  dd { margin: 0; font-size: 3.55mm; font-weight: 700; line-height: 1.45; border-top: 0.5mm dotted rgba(201, 123, 90, 0.6); padding: 1mm 0; }
+  .apply { background: #fff; border: 0.9mm solid var(--terra); border-radius: 5mm; text-align: center; padding: 2.6mm 2mm 2mm; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .apply .lbl { font-size: 4.2mm; font-weight: 900; color: var(--terra); }
+  .apply img { width: 27mm; height: 27mm; margin: 1.2mm 0; display: block; }
+  .apply p { margin: 0; font-size: 2.9mm; line-height: 1.4; font-weight: 700; color: var(--ink-soft); }
+
+  footer { margin-top: auto; text-align: center; }
+  footer .msg { font-size: 5.2mm; font-weight: 900; color: var(--terra); }
+  footer .org2 { margin-top: 0.8mm; font-size: 3mm; font-weight: 700; color: var(--ink-soft); }
+  footer .credit { margin-top: 0.6mm; font-size: 2.2mm; color: var(--ink-soft); opacity: 0.7; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="hero">
+    <div>
+      <span class="sticker">第2弾</span>
+      <p class="org">発達っ子ママキャリアデザイン室 主催</p>
+      <h1>発達特性の<br>子育て<em>応援</em>カフェ</h1>
+      <p class="tag">〜子どもを真ん中に。<br>家族も、先生も、支援者も、<br>みんながみんなの<b>応援団</b>〜</p>
+      <p class="lead">少人数だからこそ話せる。当事者の声から、子どもの気持ちと関わり方を考える時間。</p>
+    </div>
+    <img class="hero-img" src="assets/images/event2-hero-talk.jpg" alt="テーブルを囲み、語り合う大人たちのイラスト">
+  </div>
+
+  <div class="cards">
+    <div class="card c1"><span class="lbl">DATE</span><b>11<i>/</i>15<small>日</small></b><span class="s">14:00〜16:00</span></div>
+    <div class="card c2"><span class="lbl">PLACE</span><b class="t">あやセンター ぐるぐる</b><span class="s">足立区綾瀬／綾瀬駅西口 徒歩約3分</span></div>
+    <div class="card c3"><span class="lbl">MEMBERS</span><b>5<small>名</small></b><span class="s">どこからでも参加OK</span></div>
+    <div class="card c4"><span class="lbl">FEE</span><b class="t">参加無料</b><span class="s">お子様連れOK</span></div>
+  </div>
+
+  <div class="strip">
+    <img src="assets/images/event2-photo-1.jpg" alt="窓辺の本とカップ">
+    <img src="assets/images/event2-photo-2.jpg" alt="ノートと紅茶">
+    <img src="assets/images/event2-photo-3.jpg" alt="ティーカップ">
+    <p class="strip-copy">少人数だから、<br>ゆっくり話せる。<small>第1回は大人5人で、1時間半たっぷり語り合いました。</small></p>
+  </div>
+
+  <div>
+    <h2><span>当日の流れ</span></h2>
+    <div class="program">
+      <div class="item p1">
+        <div class="time">14:00〜</div>
+        <div><b>第1部　当事者が語る「私に見えていた世界」</b><p>行動の裏にあるリアルな感覚や本質に、耳を傾ける時間に。</p></div>
+        <div class="who"><img src="assets/images/speaker-chico-web.jpg" alt="ちこ"><div><div class="role">発達障害当事者</div><div class="name">ちこ</div></div></div>
+      </div>
+      <div class="item p2">
+        <div class="time">14:45〜</div>
+        <div><b>対話・質疑（臨床心理士も交えて）</b><p>感じたことや日ごろの疑問を、少人数でじっくり共有します。</p></div>
+        <div class="who"><span class="ph">ひとみ</span><div><div class="role">臨床心理士</div><div class="name">ひとみ</div></div></div>
+      </div>
+      <div class="item p3">
+        <div class="time">15:20〜</div>
+        <div><b>第2部　サポートブック活用ミニワークショップ</b><p>家庭・学校・支援者で共有するツールを知り、作る第一歩に。</p></div>
+        <div class="who"><img src="assets/images/speaker-akiko-web.jpg" alt="小山陽子"><div><div class="role">発達っ子ママ<br>キャリアメンター</div><div class="name">小山陽子</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <dl>
+      <dt>日時</dt><dd>2026年11月15日（日）14:00〜16:00</dd>
+      <dt>会場</dt><dd>あやセンター ぐるぐる（東京都足立区綾瀬4丁目6−34）</dd>
+      <dt>対象</dt><dd>発達障がい、もしくは疑いのあるお子さんの保護者／関心のある方／学校・園・療育等の関係者（お住まいは問いません）</dd>
+      <dt>定員・費用</dt><dd>5名（先着順）／無料</dd>
+      <dt>その他</dt><dd>お子様連れ歓迎です。ただし保育等はありませんので、お子様とご一緒にご参加ください。</dd>
+    </dl>
+    <div class="apply">
+      <div class="lbl">参加を申し込む</div>
+      <img src="assets/images/event2-qr.png" alt="Googleフォーム申込用QRコード">
+      <p>QRコードを読み取り、<br>フォームからお申し込みください。</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="msg">一人で抱え込まなくて、大丈夫。</div>
+    <div class="org2">主催：発達っ子ママキャリアデザイン室　／　お問い合わせ：Instagram DM（@akiko_mentor_autism）</div>
+    <div class="credit">Photos: Pexels（Samson Katt / Tara Winstead / Esra Nur Kalay）</div>
+  </footer>
+</div>
+</body>
+</html>
